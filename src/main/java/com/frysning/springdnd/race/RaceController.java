@@ -44,12 +44,15 @@ public class RaceController {
 
     @PutMapping(path = "/{id}", consumes = {MediaType.APPLICATION_FORM_URLENCODED_VALUE})
     ResponseEntity<?> updateRace(@PathVariable Long id, Race newRace) {
+        System.out.println(newRace.getSize().toString());
+
         Race updatedRace = repository.findById(id).map(race ->
             {
                 race.setName(newRace.getName());
                 if (newRace.getStat() != null) {
                     race.setStat(newRace.getStat());
                 }
+                race.setSize(newRace.getSize().getId());
 
                 return repository.save(race);
             }

@@ -1,6 +1,7 @@
 package com.frysning.springdnd.race;
 
 
+import com.frysning.springdnd.size.Size;
 import com.frysning.springdnd.stats.Stat;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -23,6 +24,7 @@ public class Race {
     @ManyToOne
     @JoinColumn(name = "stat_id", referencedColumnName = "id", nullable = false)
     private Stat stat;
+    private int size;
 
     public Race() {
     }
@@ -30,6 +32,14 @@ public class Race {
     public Race(String name, Stat stat) {
         this.name = name;
         this.stat = stat;
+    }
+
+    public Size getSize() {
+        return Size.getById(size);
+    }
+
+    public void setSize(int size) {
+        this.size = size;
     }
 
     public Stat getStat() {

@@ -1,0 +1,510 @@
+{
+	"info": {
+		"_postman_id": "d2c06cfd-f355-4630-8b09-7ec787d84225",
+		"name": "Dnd Testing",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "RaceTypes",
+			"item": [
+				{
+					"name": "getRaceTypes",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{hostname}}/racetypes",
+							"host": [
+								"{{hostname}}"
+							],
+							"path": [
+								"racetypes"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getRaceTypeById",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{hostname}}/racetypes/5",
+							"host": [
+								"{{hostname}}"
+							],
+							"path": [
+								"racetypes",
+								"5"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "putRaceType",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "name",
+									"value": "Humanoid",
+									"type": "default"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:8080/racetypes/1",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"racetypes",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "postRaceType",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "name",
+									"value": "Elementals",
+									"type": "default"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:8080/racetypes",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"racetypes"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Stats",
+			"item": [
+				{
+					"name": "putStats",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "strength",
+									"value": "12",
+									"type": "default"
+								},
+								{
+									"key": "dexterity",
+									"value": "12",
+									"type": "default"
+								},
+								{
+									"key": "constitution",
+									"value": "12",
+									"type": "default"
+								},
+								{
+									"key": "intelligence",
+									"value": "12",
+									"type": "default"
+								},
+								{
+									"key": "wisdom",
+									"value": "12",
+									"type": "default"
+								},
+								{
+									"key": "charisma",
+									"value": "12",
+									"type": "default"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{hostname}}/stats/1",
+							"host": [
+								"{{hostname}}"
+							],
+							"path": [
+								"stats",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getStats",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "str",
+									"value": "1",
+									"type": "default"
+								},
+								{
+									"key": "dex",
+									"value": "1",
+									"type": "default"
+								},
+								{
+									"key": "con",
+									"value": "1",
+									"type": "default"
+								},
+								{
+									"key": "intl",
+									"value": "1",
+									"type": "default"
+								},
+								{
+									"key": "wis",
+									"value": "1",
+									"type": "default"
+								},
+								{
+									"key": "cha",
+									"value": "1",
+									"type": "default"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{hostname}}/stats",
+							"host": [
+								"{{hostname}}"
+							],
+							"path": [
+								"stats"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getStatById",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{hostname}}/stats/1",
+							"host": [
+								"{{hostname}}"
+							],
+							"path": [
+								"stats",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "postStats",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "strength",
+									"value": "12",
+									"type": "default"
+								},
+								{
+									"key": "dexterity",
+									"value": "12",
+									"type": "default"
+								},
+								{
+									"key": "constitution",
+									"value": "12",
+									"type": "default"
+								},
+								{
+									"key": "intelligence",
+									"value": "12",
+									"type": "default"
+								},
+								{
+									"key": "wisdom",
+									"value": "12",
+									"type": "default"
+								},
+								{
+									"key": "charisma",
+									"value": "12",
+									"type": "default"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{hostname}}/stats",
+							"host": [
+								"{{hostname}}"
+							],
+							"path": [
+								"stats"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Enemies",
+			"item": [
+				{
+					"name": "getEnemies",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{hostname}}/enemies",
+							"host": [
+								"{{hostname}}"
+							],
+							"path": [
+								"enemies"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "postEnemy",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "name",
+									"value": "Knight",
+									"type": "default"
+								},
+								{
+									"key": "raceType",
+									"value": "1",
+									"type": "default"
+								},
+								{
+									"key": "stat",
+									"value": "1",
+									"type": "default"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{hostname}}/enemies",
+							"host": [
+								"{{hostname}}"
+							],
+							"path": [
+								"enemies"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "putEnemy",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "name",
+									"value": "Bandit",
+									"type": "default"
+								},
+								{
+									"key": "raceType",
+									"value": "1",
+									"type": "default"
+								},
+								{
+									"key": "stat",
+									"value": "1",
+									"type": "default"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{hostname}}/enemies/1",
+							"host": [
+								"{{hostname}}"
+							],
+							"path": [
+								"enemies",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Races",
+			"item": [
+				{
+					"name": "postRace",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "name",
+									"value": "Human",
+									"type": "default"
+								},
+								{
+									"key": "raceType",
+									"value": "1",
+									"type": "default",
+									"disabled": true
+								},
+								{
+									"key": "stat",
+									"value": "2",
+									"type": "default"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{hostname}}/races",
+							"host": [
+								"{{hostname}}"
+							],
+							"path": [
+								"races"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getRaces",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{hostname}}/races",
+							"host": [
+								"{{hostname}}"
+							],
+							"path": [
+								"races"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Actions",
+			"item": [
+				{
+					"name": "getActions",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{hostname}}/actions",
+							"host": [
+								"{{hostname}}"
+							],
+							"path": [
+								"actions"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Combiner",
+			"item": [
+				{
+					"name": "getCombine",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{hostname}}/combine/1/1",
+							"host": [
+								"{{hostname}}"
+							],
+							"path": [
+								"combine",
+								"1",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

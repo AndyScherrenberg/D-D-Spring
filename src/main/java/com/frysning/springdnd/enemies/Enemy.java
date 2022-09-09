@@ -6,6 +6,7 @@ import com.frysning.springdnd.actions.CalculatedAction;
 import com.frysning.springdnd.challengerating.ChallengeRating;
 import com.frysning.springdnd.damegetype.DamageType;
 import com.frysning.springdnd.racetype.RaceType;
+import com.frysning.springdnd.size.Size;
 import com.frysning.springdnd.speed.Speed;
 import com.frysning.springdnd.stats.ReadableStats;
 import com.frysning.springdnd.stats.Stat;
@@ -54,6 +55,9 @@ public class Enemy {
     private List<DamageType> resistance;
     @ManyToMany
     private List<Action> actions;
+
+    @Column(nullable = true)
+    private int size;
 
     public Enemy(String name, Stat stat, RaceType raceType) {
         this.name = name;
@@ -170,6 +174,14 @@ public class Enemy {
 
     public ReadableStats getBaseStats() {
         return new ReadableStats(stat);
+    }
+
+    public Size getSize() {
+        return Size.getById(size);
+    }
+
+    public void setSize(int size) {
+        this.size = size;
     }
 
 

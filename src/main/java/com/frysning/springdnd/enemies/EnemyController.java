@@ -61,6 +61,7 @@ public class EnemyController {
                 if (newEnemy.getChallengeRating() != null) {
                     enemy.setChallengeRating(newEnemy.getChallengeRating());
                 }
+                enemy.setSize(newEnemy.getSize().getId());
 
                 return repository.save(enemy);
             }
