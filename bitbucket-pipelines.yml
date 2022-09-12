@@ -24,3 +24,4 @@ pipelines:
             script:
               - echo "Deploying to production environment"
               - ls -la .
+              - ./deployApi.sh 
