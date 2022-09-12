@@ -20,6 +20,6 @@ pipelines:
         #      # Collect checkstyle results, if any, and convert to Bitbucket Code Insights.
         #      - pipe: atlassian/checkstyle-report:0.3.0
         - step:
-            name: Deploy
+            name: Deployz
             script:
               - echo "Deploying to production environment"
