@@ -26,5 +26,5 @@ pipelines:
               - pipe: atlassian/ssh-run:0.2.2
                 variables:
                   COMMAND: './apiDeploy.sh'
-                  SSH_USER: 'ssh'
+                  SSH_USER: $HOME/.ssh/id_rsa.pub
                   SERVER: 'http://192.168.178.57/'
