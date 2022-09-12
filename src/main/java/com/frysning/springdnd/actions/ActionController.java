@@ -53,6 +53,7 @@ public class ActionController {
                 action.setActionType(newAction.getActionType());
                 action.setModifierType(newAction.getModifierType());
                 action.setDamageType(newAction.getDamageType());
+                action.setWeaponAttack(newAction.isWeaponAttack());
                 return repository.save(action);
             }
         ).orElseGet(() -> {

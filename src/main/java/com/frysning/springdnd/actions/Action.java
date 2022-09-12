@@ -5,6 +5,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.frysning.springdnd.actiontype.ActionType;
 import com.frysning.springdnd.damegetype.DamageType;
 import com.frysning.springdnd.modifiertype.ModifierType;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 import javax.persistence.ElementCollection;
@@ -34,10 +35,13 @@ public class Action {
     private DamageType damageType;
 
     private String hitDice;
-    
+
     private String specialInformation;
     @ElementCollection
-    private List<Integer> modifierType;
+    private List<Integer> modifierType = new ArrayList<>();
+
+
+    private boolean isWeaponAttack;
 
     public Action() {
     }
@@ -125,4 +129,11 @@ public class Action {
         this.modifierType = modifierType;
     }
 
+    public boolean isWeaponAttack() {
+        return isWeaponAttack;
+    }
+
+    public void setWeaponAttack(boolean weaponAttack) {
+        isWeaponAttack = weaponAttack;
+    }
 }
