@@ -34,7 +34,8 @@ public class Action {
     private DamageType damageType;
 
     private String hitDice;
-
+    
+    private String specialInformation;
     @ElementCollection
     private List<Integer> modifierType;
 
@@ -43,6 +44,14 @@ public class Action {
 
     public Action(String name) {
         this.name = name;
+    }
+
+    public String getSpecialInformation() {
+        return specialInformation;
+    }
+
+    public void setSpecialInformation(String specialInformation) {
+        this.specialInformation = specialInformation;
     }
 
     public DamageType getDamageType() {

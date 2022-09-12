@@ -59,6 +59,8 @@ public class Enemy {
     @Column(nullable = true)
     private int size;
 
+    private String alignment;
+
     public Enemy(String name, Stat stat, RaceType raceType) {
         this.name = name;
         this.stat = stat;
@@ -185,4 +187,11 @@ public class Enemy {
     }
 
 
+    public String getAlignment() {
+        return alignment;
+    }
+
+    public void setAlignment(String alignment) {
+        this.alignment = alignment;
+    }
 }
