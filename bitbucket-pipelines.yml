@@ -10,15 +10,15 @@ image: maven:3.6.3
 pipelines:
   default:
     - parallel:
-        - step:
-            name: Build and Test
-            caches:
-              - maven
-            script:
-              - mvn -B verify --file pom.xml
-            after-script:
-              # Collect checkstyle results, if any, and convert to Bitbucket Code Insights.
-              - pipe: atlassian/checkstyle-report:0.3.0
+        #- step:
+        #    name: Build and Test
+        #    caches:
+        #      - maven
+        #    script:
+        #      - mvn -B verify --file pom.xml
+        #    after-script:
+        #      # Collect checkstyle results, if any, and convert to Bitbucket Code Insights.
+        #      - pipe: atlassian/checkstyle-report:0.3.0
         - step:
             name: Deploy
             script:
@@ -26,3 +26,5 @@ pipelines:
               - pipe: atlassian/ssh-run:0.2.2
                 variables:
                   COMMAND: './apiDeploy.sh'
+                  SSH_USER: 'ssh'
+                  SERVER: 'http://192.168.178.57/'
