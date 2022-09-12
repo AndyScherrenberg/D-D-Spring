@@ -11,7 +11,7 @@ pipelines:
   default:
     - parallel:
         - step:
-            name: Build and Test
+            name: Build and Test2
         #    caches:
         #      - maven
         #    script:
