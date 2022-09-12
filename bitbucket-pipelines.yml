@@ -10,8 +10,8 @@ image: maven:3.6.3
 pipelines:
   default:
     - parallel:
-        #- step:
-        #    name: Build and Test
+        - step:
+            name: Build and Test
         #    caches:
         #      - maven
         #    script:
