@@ -23,5 +23,3 @@ pipelines:
             name: Deploy
             script:
               - echo "Deploying to production environment"
-              - ls -la .
-              - ./deployApi.sh 
