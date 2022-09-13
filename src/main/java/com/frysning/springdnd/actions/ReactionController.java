@@ -12,29 +12,23 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("actions")
-public class ActionController extends BaseActionController {
+@RequestMapping("reactions")
+public class ReactionController extends BaseActionController {
 
-
-    ActionController(ActionRepository repository, ActionModelAssembler assembler) {
+    ReactionController(ActionRepository repository, ActionModelAssembler assembler) {
         super(repository, assembler);
-    }
-
-    private static String className() {
-        return ActionController.class.getSimpleName();
     }
 
     @GetMapping()
     List<EntityModel<Action>> all() {
-        return super.all(false);
+        return super.all(true);
     }
 
     @PostMapping(consumes = {MediaType.APPLICATION_FORM_URLENCODED_VALUE})
     ResponseEntity<?> createAction(Action newAction) {
-        newAction.setReaction(false);
+        newAction.setReaction(true);
         return super.createAction(newAction);
     }
-
 
     @PutMapping(path = "/{id}", consumes = {MediaType.APPLICATION_FORM_URLENCODED_VALUE})
     ResponseEntity<?> updateAction(@PathVariable Long id, Action newAction) {

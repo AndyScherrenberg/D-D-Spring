@@ -1,6 +1,11 @@
 package com.frysning.springdnd.enemies;
 
+import com.frysning.springdnd.actions.Action;
+import com.frysning.springdnd.actions.ActionRepository;
+import com.frysning.springdnd.traits.Trait;
+import com.frysning.springdnd.traits.TraitRepository;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -13,6 +18,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -22,11 +28,16 @@ public class EnemyController {
     private static final Logger LOGGER = LoggerFactory.getLogger(EnemyController.class);
 
     private final EnemyRepository repository;
+    private final TraitRepository traitRepository;
+    private final ActionRepository actionRepository;
     private final EnemyModelAssembler assembler;
 
-    EnemyController(EnemyRepository repository, EnemyModelAssembler assembler) {
+    EnemyController(EnemyRepository repository, EnemyModelAssembler assembler,
+        TraitRepository traitRepository, ActionRepository actionRepository) {
         this.repository = repository;
         this.assembler = assembler;
+        this.traitRepository = traitRepository;
+        this.actionRepository = actionRepository;
     }
 
     @GetMapping()
@@ -114,6 +125,52 @@ public class EnemyController {
             .orElseThrow(() -> new EnemyNotFoundException(id));
 
         return assembler.toModel(enemy);
+    }
+
+    @GetMapping("/{id}/extra")
+    public EntityModel<Enemy> oneWithTraits(@PathVariable Long id,
+        @RequestParam(required = false) Long[] traits,
+        @RequestParam(required = false) Long[] actions,
+        @RequestParam(required = false) Long[] reactions) {
+        LOGGER.info("Get enemy of ID {}, with traits {}, actions {}, reactions {}", id, traits,
+            actions, reactions);
+        Enemy enemy = repository.findById(id) //
+            .orElseThrow(() -> new EnemyNotFoundException(id));
+
+        List<Trait> enemyTraits = enemy.getTraits();
+
+        if (traits != null) {
+            for (Long trait : traits) {
+                Optional<Trait> optionalTrait = traitRepository.findById(trait);
+                if (optionalTrait.isPresent()) {
+                    if (!enemyTraits.contains(optionalTrait.get())) {
+                        enemyTraits.add(optionalTrait.get());
+                    }
+                }
+            }
+        }
+
+        enemy.setTraits(enemyTraits);
+        enemy.setActions(createExtraActions(actions, enemy.getActions()));
+        enemy.setReactions(createExtraActions(reactions, enemy.getReactions()));
+
+        return assembler.toModel(enemy);
+    }
+
+    private List<Action> createExtraActions(
+        @RequestParam(required = false) Long[] actions,
+        List<Action> actionList) {
+        if (actions != null) {
+            for (Long reaction : actions) {
+                Optional<Action> optionalReaction = actionRepository.findById(reaction);
+                if (optionalReaction.isPresent()) {
+                    if (!actionList.contains(optionalReaction.get())) {
+                        actionList.add(optionalReaction.get());
+                    }
+                }
+            }
+        }
+        return actionList;
     }
 
 }

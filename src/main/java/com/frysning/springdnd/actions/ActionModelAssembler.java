@@ -13,9 +13,14 @@ class ActionModelAssembler implements RepresentationModelAssembler<Action, Entit
 
     @Override
     public EntityModel<Action> toModel(Action action) {
+        String rel = "actions";
+        if (action.isReaction()) {
+            rel = "reactions";
+        }
+
         return EntityModel.of(action,
-            linkTo(methodOn(ActionController.class).one(action.getId())).withSelfRel(),
-            linkTo(methodOn(ActionController.class).all()).withRel("attacks")
+            linkTo(methodOn(BaseActionController.class).getAction(action.getId())).withSelfRel(),
+            linkTo(methodOn(BaseActionController.class).all(action.isReaction())).withRel(rel)
         );
     }
 }

@@ -8,6 +8,7 @@ import com.frysning.springdnd.modifiertype.ModifierType;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
+import javax.persistence.Column;
 import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -42,12 +43,22 @@ public class Action {
 
 
     private boolean isWeaponAttack;
+    @Column(columnDefinition = "boolean default false")
+    private boolean isReaction;
 
     public Action() {
     }
 
     public Action(String name) {
         this.name = name;
+    }
+
+    public boolean isReaction() {
+        return isReaction;
+    }
+
+    public void setReaction(boolean reaction) {
+        isReaction = reaction;
     }
 
     public String getSpecialInformation() {
