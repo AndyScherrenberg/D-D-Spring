@@ -61,7 +61,21 @@ public class EnemyController {
                 if (newEnemy.getChallengeRating() != null) {
                     enemy.setChallengeRating(newEnemy.getChallengeRating());
                 }
+
+                if (!newEnemy.getValidSpeed().isEmpty()) {
+                    enemy.setSpeed(newEnemy.getValidSpeed());
+                }
+
+                if (!newEnemy.getValidActions().isEmpty()) {
+                    enemy.setActions(newEnemy.getValidActions());
+                }
+
+                if (!newEnemy.getValidReactions().isEmpty()) {
+                    enemy.setReactions(newEnemy.getValidReactions());
+                }
+
                 enemy.setSize(newEnemy.getSize().getId());
+                enemy.setSavingThrows(newEnemy.getSavingThrows());
 
                 return repository.save(enemy);
             }

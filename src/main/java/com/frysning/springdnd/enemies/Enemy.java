@@ -5,6 +5,7 @@ import com.frysning.springdnd.actions.Action;
 import com.frysning.springdnd.actions.CalculatedAction;
 import com.frysning.springdnd.challengerating.ChallengeRating;
 import com.frysning.springdnd.damegetype.DamageType;
+import com.frysning.springdnd.modifiertype.ModifierType;
 import com.frysning.springdnd.racetype.RaceType;
 import com.frysning.springdnd.size.Size;
 import com.frysning.springdnd.speed.Speed;
@@ -14,6 +15,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 import javax.persistence.Column;
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -54,12 +56,16 @@ public class Enemy {
     @ManyToMany
     private List<DamageType> resistance;
     @ManyToMany
-    private List<Action> actions;
-
+    private List<Action> actions = new ArrayList<>();
+    @ManyToMany
+    private List<Action> reactions = new ArrayList<>();
     @Column(nullable = true)
     private int size;
-
     private String alignment;
+
+
+    @ElementCollection
+    private List<Integer> savingThrows = new ArrayList<>();
 
     public Enemy(String name, Stat stat, RaceType raceType) {
         this.name = name;
@@ -69,6 +75,36 @@ public class Enemy {
 
     public Enemy() {
 
+    }
+
+    public List<Action> getReactions() {
+        return reactions;
+    }
+
+    @JsonIgnore
+    public void setReactions(List<Action> reactions) {
+        this.reactions = reactions;
+    }
+
+    public List<CalculatedAction> getCalculatedReactions() {
+        return reactions.stream()
+            .map(action -> new CalculatedAction(action, getBaseStats(), getProficiencyBonus(),
+                this.name))
+            .collect(
+                Collectors.toList());
+    }
+
+
+    @JsonIgnore
+    public List<Action> getValidActions() {
+        return actions.stream().filter(speed1 -> speed1.getId() != null)
+            .collect(Collectors.toList());
+    }
+
+    @JsonIgnore
+    public List<Action> getValidReactions() {
+        return reactions.stream().filter(speed1 -> speed1.getId() != null)
+            .collect(Collectors.toList());
     }
 
     @JsonIgnore
@@ -82,7 +118,8 @@ public class Enemy {
 
     public List<CalculatedAction> getCalculatedAction() {
         return actions.stream()
-            .map(action -> new CalculatedAction(action, getBaseStats(), getProficiencyBonus()))
+            .map(action -> new CalculatedAction(action, getBaseStats(), getProficiencyBonus(),
+                this.name))
             .collect(
                 Collectors.toList());
     }
@@ -193,5 +230,24 @@ public class Enemy {
 
     public void setAlignment(String alignment) {
         this.alignment = alignment;
+    }
+
+    public List<CalculatedSavingThrow> getCalculatedSavingThrows() {
+        return savingThrows.stream().map(
+            modifierId -> new CalculatedSavingThrow(ModifierType.getById(modifierId),
+                getBaseStats(),
+                proficiencyBonus)).collect(
+            Collectors.toList());
+    }
+
+
+    @JsonIgnore
+    public List<Integer> getSavingThrows() {
+        return savingThrows;
+    }
+
+    public void setSavingThrows(
+        List<Integer> modifierType) {
+        this.savingThrows = modifierType;
     }
 }
