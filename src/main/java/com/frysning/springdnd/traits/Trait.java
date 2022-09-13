@@ -13,13 +13,13 @@ public class Trait {
     @GeneratedValue(strategy = GenerationType.IDENTITY) Long id;
 
     private String name;
-    @Column(name = "value", length = 2000)
-    private String value;
+    @Column(length = 2000)
+    private String description;
 
-    public Trait(Long id, String name, String value) {
+    public Trait(Long id, String name, String description) {
         this.id = id;
         this.name = name;
-        this.value = value;
+        this.description = description;
     }
 
     public Trait() {
@@ -42,12 +42,12 @@ public class Trait {
         this.name = name;
     }
 
-    public String getValue() {
-        return value;
+    public String getDescription() {
+        return description;
     }
 
-    public void setValue(String value) {
-        this.value = value;
+    public void setDescription(String value) {
+        this.description = value;
     }
 
 

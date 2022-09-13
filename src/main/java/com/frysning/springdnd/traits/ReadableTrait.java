@@ -14,8 +14,8 @@ public class ReadableTrait extends Trait {
 
     public ReadableTrait(Trait trait, ReadableStats readableStats, int proficiencyBonus,
         String enemyName) {
-        this(trait.getId(), trait.getName(), trait.getValue());
-        this.setValue(MessageFormat.format(this.getValue(), enemyName));
+        this(trait.getId(), trait.getName(), trait.getDescription());
+        this.setDescription(MessageFormat.format(this.getDescription(), enemyName));
         this.updateValue(readableStats, proficiencyBonus);
     }
 
@@ -26,7 +26,7 @@ public class ReadableTrait extends Trait {
     private void updateValue(ReadableStats stats, int proficiencyBonus) {
 
         List<String> strings = Arrays.stream(
-                StringUtils.substringsBetween(this.getValue(), "[", "]"))
+                StringUtils.substringsBetween(this.getDescription(), "[", "]"))
             .distinct().collect(Collectors.toList());
 
         for (String string : strings
@@ -73,7 +73,7 @@ public class ReadableTrait extends Trait {
     }
 
     private void replaceDCSaving(ModifierType modifierType, int dcValue) {
-        this.setValue(this.getValue().replace("[" + modifierType.modifier + "]",
+        this.setDescription(this.getDescription().replace("[" + modifierType.modifier + "]",
             MessageFormat.format("DC {0} {1}", dcValue + baseModifier, modifierType.modifier)));
     }
 

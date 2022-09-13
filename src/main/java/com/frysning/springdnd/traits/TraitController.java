@@ -47,7 +47,7 @@ public class TraitController {
         Trait updatedTrait = repository.findById(id).map(trait ->
             {
                 trait.setName(newTrait.getName());
-                trait.setValue(newTrait.getValue());
+                trait.setDescription(newTrait.getDescription());
                 return repository.save(newTrait);
             }
         ).orElseGet(() -> {
