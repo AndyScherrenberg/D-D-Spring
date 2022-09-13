@@ -76,6 +76,7 @@ public class EnemyController {
 
                 enemy.setSize(newEnemy.getSize().getId());
                 enemy.setSavingThrows(newEnemy.getSavingThrows());
+                enemy.setAlignment(newEnemy.getAlignment());
 
                 return repository.save(enemy);
             }
