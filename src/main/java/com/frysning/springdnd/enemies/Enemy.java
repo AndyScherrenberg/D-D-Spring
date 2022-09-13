@@ -116,7 +116,7 @@ public class Enemy {
         this.actions = actions;
     }
 
-    public List<CalculatedAction> getCalculatedAction() {
+    public List<CalculatedAction> getCalculatedActions() {
         return actions.stream()
             .map(action -> new CalculatedAction(action, getBaseStats(), getProficiencyBonus(),
                 this.name))
