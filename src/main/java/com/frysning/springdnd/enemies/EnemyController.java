@@ -2,6 +2,8 @@ package com.frysning.springdnd.enemies;
 
 import java.util.List;
 import java.util.stream.Collectors;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.hateoas.EntityModel;
 import org.springframework.hateoas.IanaLinkRelations;
 import org.springframework.http.MediaType;
@@ -17,6 +19,8 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("enemies")
 public class EnemyController {
 
+    private static final Logger LOGGER = LoggerFactory.getLogger(EnemyController.class);
+
     private final EnemyRepository repository;
     private final EnemyModelAssembler assembler;
 
@@ -27,6 +31,7 @@ public class EnemyController {
 
     @GetMapping()
     List<EntityModel<Enemy>> all() {
+        LOGGER.info("Get all enemies");
         return repository.findAll().stream()
             .map(assembler::toModel)
             .collect(Collectors.toList());
@@ -34,7 +39,7 @@ public class EnemyController {
 
     @PostMapping(consumes = {MediaType.APPLICATION_FORM_URLENCODED_VALUE})
     ResponseEntity<?> newEnemy(Enemy newEnemy) {
-        System.out.println("Enemy " + newEnemy.toString());
+        LOGGER.info("Post enemy " + newEnemy.toString());
         EntityModel<Enemy> entityModel = assembler.toModel(repository.save(newEnemy));
 
         return ResponseEntity //
@@ -78,14 +83,21 @@ public class EnemyController {
                     enemy.setLanguages(newEnemy.getValidLanguages());
                 }
 
+                if (!newEnemy.getValidTraits().isEmpty()) {
+                    enemy.setTraits(newEnemy.getValidTraits());
+                }
+
                 enemy.setSize(newEnemy.getSize().getId());
                 enemy.setSavingThrows(newEnemy.getSavingThrows());
                 enemy.setAlignment(newEnemy.getAlignment());
+
+                LOGGER.info("PUT: Update enemy " + enemy);
 
                 return repository.save(enemy);
             }
         ).orElseGet(() -> {
             newEnemy.setId(id);
+            LOGGER.info("PUT: Insert enemy " + newEnemy);
             return repository.save(newEnemy);
         });
 
@@ -97,7 +109,7 @@ public class EnemyController {
 
     @GetMapping("/{id}")
     public EntityModel<Enemy> one(@PathVariable Long id) {
-
+        LOGGER.info("Get enemy of ID: " + id);
         Enemy enemy = repository.findById(id) //
             .orElseThrow(() -> new EnemyNotFoundException(id));
 

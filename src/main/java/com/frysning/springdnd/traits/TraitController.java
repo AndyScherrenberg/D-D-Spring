@@ -2,6 +2,8 @@ package com.frysning.springdnd.traits;
 
 import java.util.List;
 import java.util.stream.Collectors;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.hateoas.EntityModel;
 import org.springframework.hateoas.IanaLinkRelations;
 import org.springframework.http.MediaType;
@@ -17,6 +19,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("traits")
 public class TraitController {
 
+    private static final Logger LOGGER = LoggerFactory.getLogger(TraitController.class);
     private final TraitRepository repository;
     private final TraitModelAssembler assembler;
 
@@ -28,6 +31,7 @@ public class TraitController {
 
     @GetMapping()
     List<EntityModel<Trait>> all() {
+        LOGGER.info("GET all traits");
         return repository.findAll().stream()
             .map(assembler::toModel)
             .collect(Collectors.toList());
@@ -35,6 +39,7 @@ public class TraitController {
 
     @PostMapping(consumes = {MediaType.APPLICATION_FORM_URLENCODED_VALUE})
     ResponseEntity<?> newTrait(Trait newTrait) {
+        LOGGER.info("POST new trait: {}", newTrait);
         EntityModel<Trait> entityModel = assembler.toModel(repository.save(newTrait));
 
         return ResponseEntity //
@@ -44,6 +49,7 @@ public class TraitController {
 
     @PutMapping(path = "/{id}", consumes = {MediaType.APPLICATION_FORM_URLENCODED_VALUE})
     ResponseEntity<?> updateTrait(@PathVariable Long id, Trait newTrait) {
+        LOGGER.info("PUT trait with id and value: {}, {}", id, newTrait);
         Trait updatedTrait = repository.findById(id).map(trait ->
             {
                 trait.setName(newTrait.getName());
@@ -63,7 +69,7 @@ public class TraitController {
 
     @GetMapping("/{id}")
     public EntityModel<Trait> one(@PathVariable Long id) {
-
+        LOGGER.info("GET trait by id: {}", id);
         Trait trait = repository.findById(id) //
             .orElseThrow(() -> new TraitNotFoundException(id));
 

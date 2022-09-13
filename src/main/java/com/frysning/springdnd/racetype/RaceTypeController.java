@@ -1,7 +1,10 @@
 package com.frysning.springdnd.racetype;
 
+import com.frysning.springdnd.size.SizeController;
 import java.util.List;
 import java.util.stream.Collectors;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.hateoas.EntityModel;
 import org.springframework.hateoas.IanaLinkRelations;
 import org.springframework.http.MediaType;
@@ -17,6 +20,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("racetypes")
 public class RaceTypeController {
 
+    private static final Logger LOGGER = LoggerFactory.getLogger(SizeController.class);
     private final RaceTypeRepository repository;
     private final RaceTypeModelAssembler assembler;
 
@@ -27,14 +31,15 @@ public class RaceTypeController {
 
     @GetMapping()
     List<EntityModel<RaceType>> all() {
-        System.out.println("Something is trying to reach racetypes");
+        LOGGER.info("GET all racetypes");
         return repository.findAll().stream()
             .map(assembler::toModel)
             .collect(Collectors.toList());
     }
 
     @PostMapping(consumes = {MediaType.APPLICATION_FORM_URLENCODED_VALUE})
-    ResponseEntity<?> newStat(RaceType newRaceType) {
+    ResponseEntity<?> newRaceType(RaceType newRaceType) {
+        LOGGER.info("POST new RaceType with value: {}", newRaceType.toString());
         EntityModel<RaceType> entityModel = assembler.toModel(repository.save(newRaceType));
 
         return ResponseEntity //
@@ -43,7 +48,8 @@ public class RaceTypeController {
     }
 
     @PutMapping(path = "/{id}", consumes = {MediaType.APPLICATION_FORM_URLENCODED_VALUE})
-    ResponseEntity<?> updateAttack(@PathVariable Long id, RaceType newRaceType) {
+    ResponseEntity<?> updateRaceType(@PathVariable Long id, RaceType newRaceType) {
+        LOGGER.info("PUT raceType with id and value: {}, {}", id, newRaceType.toString());
         RaceType updatedStats = repository.findById(id).map(stats ->
             {
                 stats.setName(newRaceType.getName());
@@ -62,7 +68,7 @@ public class RaceTypeController {
 
     @GetMapping("/{id}")
     public EntityModel<RaceType> one(@PathVariable Long id) {
-
+        LOGGER.info("GET RaceType by id: {}", id);
         RaceType raceType = repository.findById(id) //
             .orElseThrow(() -> new RaceTypeNotFoundException(id));
 

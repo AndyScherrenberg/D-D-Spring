@@ -2,6 +2,8 @@ package com.frysning.springdnd.actions;
 
 import java.util.List;
 import java.util.stream.Collectors;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.hateoas.EntityModel;
 import org.springframework.hateoas.IanaLinkRelations;
 import org.springframework.http.MediaType;
@@ -17,6 +19,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("actions")
 public class ActionController {
 
+    private final static Logger LOGGER = LoggerFactory.getLogger(ActionController.class);
     private final ActionRepository repository;
     private final ActionModelAssembler assembler;
 
@@ -27,6 +30,7 @@ public class ActionController {
 
     @GetMapping()
     List<EntityModel<Action>> all() {
+        LOGGER.info("GET all actions");
         return repository.findAll().stream()
             .map(assembler::toModel)
             .collect(Collectors.toList());
