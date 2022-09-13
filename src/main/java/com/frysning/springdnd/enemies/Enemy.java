@@ -12,6 +12,8 @@ import com.frysning.springdnd.size.Size;
 import com.frysning.springdnd.speed.Speed;
 import com.frysning.springdnd.stats.ReadableStats;
 import com.frysning.springdnd.stats.Stat;
+import com.frysning.springdnd.traits.ReadableTrait;
+import com.frysning.springdnd.traits.Trait;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -60,6 +62,9 @@ public class Enemy {
     private List<Action> actions = new ArrayList<>();
     @ManyToMany
     private List<Action> reactions = new ArrayList<>();
+
+    @ManyToMany
+    private List<Trait> traits = new ArrayList<>();
     @Column(nullable = true)
     private int size;
     private String alignment;
@@ -264,5 +269,29 @@ public class Enemy {
     public void setSavingThrows(
         List<Integer> modifierType) {
         this.savingThrows = modifierType;
+    }
+
+
+    @JsonIgnore
+    public List<Trait> getValidTraits() {
+        return traits.stream().filter(trait -> trait.getId() != null)
+            .collect(Collectors.toList());
+    }
+
+    @JsonIgnore
+    public List<Trait> getTraits() {
+        return traits;
+    }
+
+    public void setTraits(List<Trait> traits) {
+        this.traits = traits;
+    }
+
+    public List<ReadableTrait> getReadableTraits() {
+        return traits.stream()
+            .map(trait -> new ReadableTrait(trait, getBaseStats(), getProficiencyBonus(),
+                this.name))
+            .collect(
+                Collectors.toList());
     }
 }
