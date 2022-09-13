@@ -25,51 +25,53 @@ public class ReadableTrait extends Trait {
 
     private void updateValue(ReadableStats stats, int proficiencyBonus) {
 
-        List<String> strings = Arrays.stream(
-                StringUtils.substringsBetween(this.getDescription(), "[", "]"))
-            .distinct().collect(Collectors.toList());
+        String[] traitsToUpdate = StringUtils.substringsBetween(this.getDescription(), "[", "]");
 
-        for (String string : strings
-        ) {
-            ModifierType modifierType = ModifierType.valueOf(string);
-            switch (modifierType) {
-                case STR:
-                    replaceDCSaving(modifierType,
-                        stats.getStrength().getModifier() + proficiencyBonus);
-                    break;
-                case DEX:
-                    replaceDCSaving(
-                        modifierType,
-                        stats.getDexterity().getModifier() + proficiencyBonus);
-                    break;
-                case CON:
-                    replaceDCSaving(
-                        modifierType,
-                        stats.getConstitution().getModifier() + proficiencyBonus);
-                    break;
-                case INT:
-                    replaceDCSaving(
-                        modifierType,
-                        stats.getIntelligence().getModifier() + proficiencyBonus);
-                    break;
-                case WIS:
-                    replaceDCSaving(
-                        modifierType,
-                        stats.getWisdom().getModifier() + proficiencyBonus);
-                    break;
-                case CHA:
-                    replaceDCSaving(
-                        modifierType,
-                        stats.getCharisma().getModifier() + proficiencyBonus);
-                    break;
-                case NOT_SUPPORTED:
-                    break;
-            }
-
-
+        if (traitsToUpdate != null) {
+            List<String> savingThrows = Arrays.stream(traitsToUpdate)
+                .distinct().collect(Collectors.toList());
+            savingThrows.forEach(savingThrow -> {
+                determineWhichModifierIsNeeded(ModifierType.valueOf(savingThrow), stats,
+                    proficiencyBonus);
+            });
         }
+    }
 
-
+    private void determineWhichModifierIsNeeded(ModifierType modifierType, ReadableStats stats,
+        int proficiencyBonus) {
+        switch (modifierType) {
+            case STR:
+                replaceDCSaving(modifierType,
+                    stats.getStrength().getModifier() + proficiencyBonus);
+                break;
+            case DEX:
+                replaceDCSaving(
+                    modifierType,
+                    stats.getDexterity().getModifier() + proficiencyBonus);
+                break;
+            case CON:
+                replaceDCSaving(
+                    modifierType,
+                    stats.getConstitution().getModifier() + proficiencyBonus);
+                break;
+            case INT:
+                replaceDCSaving(
+                    modifierType,
+                    stats.getIntelligence().getModifier() + proficiencyBonus);
+                break;
+            case WIS:
+                replaceDCSaving(
+                    modifierType,
+                    stats.getWisdom().getModifier() + proficiencyBonus);
+                break;
+            case CHA:
+                replaceDCSaving(
+                    modifierType,
+                    stats.getCharisma().getModifier() + proficiencyBonus);
+                break;
+            case NOT_SUPPORTED:
+                break;
+        }
     }
 
     private void replaceDCSaving(ModifierType modifierType, int dcValue) {

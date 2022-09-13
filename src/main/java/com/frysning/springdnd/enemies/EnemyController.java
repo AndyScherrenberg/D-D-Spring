@@ -91,7 +91,7 @@ public class EnemyController {
                 enemy.setSavingThrows(newEnemy.getSavingThrows());
                 enemy.setAlignment(newEnemy.getAlignment());
 
-                LOGGER.info("PUT: Update enemy " + enemy);
+                LOGGER.info("PUT: Update enemy " + enemy.toString());
 
                 return repository.save(enemy);
             }
