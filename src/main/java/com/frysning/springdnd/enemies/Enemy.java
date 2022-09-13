@@ -5,6 +5,7 @@ import com.frysning.springdnd.actions.Action;
 import com.frysning.springdnd.actions.CalculatedAction;
 import com.frysning.springdnd.challengerating.ChallengeRating;
 import com.frysning.springdnd.damegetype.DamageType;
+import com.frysning.springdnd.language.Language;
 import com.frysning.springdnd.modifiertype.ModifierType;
 import com.frysning.springdnd.racetype.RaceType;
 import com.frysning.springdnd.size.Size;
@@ -62,8 +63,8 @@ public class Enemy {
     @Column(nullable = true)
     private int size;
     private String alignment;
-
-
+    @ManyToMany
+    private List<Language> languages = new ArrayList<>();
     @ElementCollection
     private List<Integer> savingThrows = new ArrayList<>();
 
@@ -75,6 +76,20 @@ public class Enemy {
 
     public Enemy() {
 
+    }
+
+    @JsonIgnore
+    public List<Language> getValidLanguages() {
+        return languages.stream().filter(language -> language.getId() != null)
+            .collect(Collectors.toList());
+    }
+
+    public List<Language> getLanguages() {
+        return languages;
+    }
+
+    public void setLanguages(List<Language> languages) {
+        this.languages = languages;
     }
 
     public List<Action> getReactions() {
@@ -97,13 +112,13 @@ public class Enemy {
 
     @JsonIgnore
     public List<Action> getValidActions() {
-        return actions.stream().filter(speed1 -> speed1.getId() != null)
+        return actions.stream().filter(action -> action.getId() != null)
             .collect(Collectors.toList());
     }
 
     @JsonIgnore
     public List<Action> getValidReactions() {
-        return reactions.stream().filter(speed1 -> speed1.getId() != null)
+        return reactions.stream().filter(reaction -> reaction.getId() != null)
             .collect(Collectors.toList());
     }
 

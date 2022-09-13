@@ -1,14 +1,20 @@
 package com.frysning.springdnd.race;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.frysning.springdnd.language.Language;
 import com.frysning.springdnd.size.Size;
 import com.frysning.springdnd.stats.Stat;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
@@ -25,6 +31,9 @@ public class Race {
     @JoinColumn(name = "stat_id", referencedColumnName = "id", nullable = false)
     private Stat stat;
     private int size;
+
+    @ManyToMany
+    private List<Language> languages = new ArrayList<>();
 
     public Race() {
     }
@@ -66,4 +75,17 @@ public class Race {
         this.name = name;
     }
 
+    @JsonIgnore
+    public List<Language> getValidLanguages() {
+        return languages.stream().filter(language -> language.getId() != null)
+            .collect(Collectors.toList());
+    }
+
+    public List<Language> getLanguages() {
+        return languages;
+    }
+
+    public void setLanguages(List<Language> languages) {
+        this.languages = languages;
+    }
 }

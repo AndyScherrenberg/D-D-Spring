@@ -74,6 +74,10 @@ public class EnemyController {
                     enemy.setReactions(newEnemy.getValidReactions());
                 }
 
+                if (!newEnemy.getValidLanguages().isEmpty()) {
+                    enemy.setLanguages(newEnemy.getValidLanguages());
+                }
+
                 enemy.setSize(newEnemy.getSize().getId());
                 enemy.setSavingThrows(newEnemy.getSavingThrows());
                 enemy.setAlignment(newEnemy.getAlignment());

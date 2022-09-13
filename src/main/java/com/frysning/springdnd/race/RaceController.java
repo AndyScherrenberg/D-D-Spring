@@ -52,6 +52,11 @@ public class RaceController {
                 if (newRace.getStat() != null) {
                     race.setStat(newRace.getStat());
                 }
+
+                if (!newRace.getValidLanguages().isEmpty()) {
+                    race.setLanguages(newRace.getValidLanguages());
+                }
+
                 race.setSize(newRace.getSize().getId());
 
                 return repository.save(race);
