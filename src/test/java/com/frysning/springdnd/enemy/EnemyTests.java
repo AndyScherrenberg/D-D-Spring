@@ -1,0 +1,1 @@
+package com.frysning.springdnd.enemy;public class EnemyTests {}

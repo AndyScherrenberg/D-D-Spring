@@ -1,0 +1,1 @@
+package com.frysning.springdnd.combiner;public class CombinerTests {}
