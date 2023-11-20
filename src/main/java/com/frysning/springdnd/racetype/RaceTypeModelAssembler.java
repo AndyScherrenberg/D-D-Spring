@@ -14,7 +14,10 @@ class RaceTypeModelAssembler implements
 
     @Override
     public EntityModel<RaceType> toModel(RaceType raceType) {
-        return EntityModel.of(raceType,
+        var useType = raceType;
+        useType.setName(raceType.getName() + "=-> New VERSION");
+
+        return EntityModel.of(useType,
             linkTo(methodOn(RaceTypeController.class).one(raceType.getId())).withSelfRel(),
             linkTo(methodOn(RaceTypeController.class).all()).withRel("racetypes")
         );
