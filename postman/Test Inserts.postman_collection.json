@@ -1,0 +1,1573 @@
+{
+	"info": {
+		"_postman_id": "0915f439-443e-4f18-9fef-54ac8aebf471",
+		"name": "Test Inserts",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "8091423"
+	},
+	"item": [
+		{
+			"name": "Insert Bandit Stats",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "strength",
+							"value": "11",
+							"type": "default"
+						},
+						{
+							"key": "dexterity",
+							"value": "12",
+							"type": "default"
+						},
+						{
+							"key": "constitution",
+							"value": "12",
+							"type": "default"
+						},
+						{
+							"key": "intelligence",
+							"value": "10",
+							"type": "default"
+						},
+						{
+							"key": "wisdom",
+							"value": "10",
+							"type": "default"
+						},
+						{
+							"key": "charisma",
+							"value": "10",
+							"type": "default"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{hostname}}/stats",
+					"host": [
+						"{{hostname}}"
+					],
+					"path": [
+						"stats"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Insert Human Race Stats",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "strength",
+							"value": "1",
+							"type": "default"
+						},
+						{
+							"key": "dexterity",
+							"value": "1",
+							"type": "default"
+						},
+						{
+							"key": "constitution",
+							"value": "1",
+							"type": "default"
+						},
+						{
+							"key": "intelligence",
+							"value": "1",
+							"type": "default"
+						},
+						{
+							"key": "wisdom",
+							"value": "1",
+							"type": "default"
+						},
+						{
+							"key": "charisma",
+							"value": "1",
+							"type": "default"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{hostname}}/stats",
+					"host": [
+						"{{hostname}}"
+					],
+					"path": [
+						"stats"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Insert Elven Race Stats",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "strength",
+							"value": "0",
+							"type": "default"
+						},
+						{
+							"key": "dexterity",
+							"value": "2",
+							"type": "default"
+						},
+						{
+							"key": "constitution",
+							"value": "0",
+							"type": "default"
+						},
+						{
+							"key": "intelligence",
+							"value": "0",
+							"type": "default"
+						},
+						{
+							"key": "wisdom",
+							"value": "0",
+							"type": "default"
+						},
+						{
+							"key": "charisma",
+							"value": "0",
+							"type": "default"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{hostname}}/stats",
+					"host": [
+						"{{hostname}}"
+					],
+					"path": [
+						"stats"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Insert Goblin Race Stats",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "strength",
+							"value": "0",
+							"type": "default"
+						},
+						{
+							"key": "dexterity",
+							"value": "2",
+							"type": "default"
+						},
+						{
+							"key": "constitution",
+							"value": "1",
+							"type": "default"
+						},
+						{
+							"key": "intelligence",
+							"value": "0",
+							"type": "default"
+						},
+						{
+							"key": "wisdom",
+							"value": "0",
+							"type": "default"
+						},
+						{
+							"key": "charisma",
+							"value": "0",
+							"type": "default"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{hostname}}/stats",
+					"host": [
+						"{{hostname}}"
+					],
+					"path": [
+						"stats"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Insert Guard Stats",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "strength",
+							"value": "13",
+							"type": "default"
+						},
+						{
+							"key": "dexterity",
+							"value": "12",
+							"type": "default"
+						},
+						{
+							"key": "constitution",
+							"value": "12",
+							"type": "default"
+						},
+						{
+							"key": "intelligence",
+							"value": "10",
+							"type": "default"
+						},
+						{
+							"key": "wisdom",
+							"value": "11",
+							"type": "default"
+						},
+						{
+							"key": "charisma",
+							"value": "10",
+							"type": "default"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{hostname}}/stats",
+					"host": [
+						"{{hostname}}"
+					],
+					"path": [
+						"stats"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Insert Knigth Stats",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "strength",
+							"value": "13",
+							"type": "default"
+						},
+						{
+							"key": "dexterity",
+							"value": "12",
+							"type": "default"
+						},
+						{
+							"key": "constitution",
+							"value": "12",
+							"type": "default"
+						},
+						{
+							"key": "intelligence",
+							"value": "10",
+							"type": "default"
+						},
+						{
+							"key": "wisdom",
+							"value": "11",
+							"type": "default"
+						},
+						{
+							"key": "charisma",
+							"value": "10",
+							"type": "default"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{hostname}}/stats",
+					"host": [
+						"{{hostname}}"
+					],
+					"path": [
+						"stats"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Insert Humanoid",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "default"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "name",
+							"value": "Humanoid",
+							"type": "default"
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:8080/racetypes",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"racetypes"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Insert Dragon",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "default"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "name",
+							"value": "Dragon",
+							"type": "default"
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:8080/racetypes",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"racetypes"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Insert Scimitar Attack",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "name",
+							"value": "Scimitar",
+							"type": "default"
+						},
+						{
+							"key": "actionType",
+							"value": "1",
+							"type": "default"
+						},
+						{
+							"key": "reach",
+							"value": "5ft",
+							"type": "default"
+						},
+						{
+							"key": "target",
+							"value": "one",
+							"type": "default"
+						},
+						{
+							"key": "hitDice",
+							"value": "1d6",
+							"type": "default"
+						},
+						{
+							"key": "modifierType",
+							"value": "1,2",
+							"type": "default"
+						},
+						{
+							"key": "damageType",
+							"value": "12",
+							"type": "default"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{hostname}}/actions",
+					"host": [
+						"{{hostname}}"
+					],
+					"path": [
+						"actions"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Insert Light Crossbow",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "name",
+							"value": "Light Crossbow",
+							"type": "default"
+						},
+						{
+							"key": "actionType",
+							"value": "2",
+							"type": "default"
+						},
+						{
+							"key": "reach",
+							"value": "80 ft./320ft",
+							"type": "default"
+						},
+						{
+							"key": "target",
+							"value": "one",
+							"type": "default"
+						},
+						{
+							"key": "hitDice",
+							"value": "1d8",
+							"type": "default"
+						},
+						{
+							"key": "modifierType",
+							"value": "2",
+							"type": "default"
+						},
+						{
+							"key": "damageType",
+							"value": "8",
+							"type": "default"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{hostname}}/actions",
+					"host": [
+						"{{hostname}}"
+					],
+					"path": [
+						"actions"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Insert Spear Attack",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "name",
+							"value": "Spear",
+							"type": "default"
+						},
+						{
+							"key": "actionType",
+							"value": "1",
+							"type": "default"
+						},
+						{
+							"key": "reach",
+							"value": "5ft",
+							"type": "default"
+						},
+						{
+							"key": "target",
+							"value": "one",
+							"type": "default"
+						},
+						{
+							"key": "hitDice",
+							"value": "1d6",
+							"type": "default"
+						},
+						{
+							"key": "modifierType",
+							"value": "1,2",
+							"type": "default"
+						},
+						{
+							"key": "damageType",
+							"value": "8",
+							"type": "default"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{hostname}}/actions",
+					"host": [
+						"{{hostname}}"
+					],
+					"path": [
+						"actions"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Insert Spear Attack 2-Handed",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "name",
+							"value": "Spear",
+							"type": "default"
+						},
+						{
+							"key": "actionType",
+							"value": "1",
+							"type": "default"
+						},
+						{
+							"key": "reach",
+							"value": "5ft",
+							"type": "default"
+						},
+						{
+							"key": "target",
+							"value": "one",
+							"type": "default"
+						},
+						{
+							"key": "hitDice",
+							"value": "1d8",
+							"type": "default"
+						},
+						{
+							"key": "modifierType",
+							"value": "1,2",
+							"type": "default"
+						},
+						{
+							"key": "damageType",
+							"value": "8",
+							"type": "default"
+						},
+						{
+							"key": "note",
+							"value": "2-Handed",
+							"type": "default"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{hostname}}/actions",
+					"host": [
+						"{{hostname}}"
+					],
+					"path": [
+						"actions"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Insert Spear Attack Ranged",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "name",
+							"value": "Spear",
+							"type": "default"
+						},
+						{
+							"key": "actionType",
+							"value": "2",
+							"type": "default"
+						},
+						{
+							"key": "reach",
+							"value": "20/60 ft",
+							"type": "default"
+						},
+						{
+							"key": "target",
+							"value": "one",
+							"type": "default"
+						},
+						{
+							"key": "hitDice",
+							"value": "1d6",
+							"type": "default"
+						},
+						{
+							"key": "modifierType",
+							"value": "1,2",
+							"type": "default"
+						},
+						{
+							"key": "damageType",
+							"value": "8",
+							"type": "default"
+						},
+						{
+							"key": "note",
+							"value": "2-Handed",
+							"type": "default",
+							"disabled": true
+						}
+					]
+				},
+				"url": {
+					"raw": "{{hostname}}/actions",
+					"host": [
+						"{{hostname}}"
+					],
+					"path": [
+						"actions"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Insert Multiattack",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "name",
+							"value": "Multiattack",
+							"type": "default"
+						},
+						{
+							"key": "actionType",
+							"value": "3",
+							"type": "default"
+						},
+						{
+							"key": "reach",
+							"value": "5ft",
+							"type": "default",
+							"disabled": true
+						},
+						{
+							"key": "target",
+							"value": "one",
+							"type": "default",
+							"disabled": true
+						},
+						{
+							"key": "hitDice",
+							"value": "2d6",
+							"type": "default",
+							"disabled": true
+						},
+						{
+							"key": "modifierType",
+							"value": "1",
+							"type": "default",
+							"disabled": true
+						},
+						{
+							"key": "damageType",
+							"value": "1",
+							"type": "default",
+							"disabled": true
+						},
+						{
+							"key": "note",
+							"value": "2-Handed",
+							"type": "default",
+							"disabled": true
+						},
+						{
+							"key": "specialInformation",
+							"value": "The {0} makes two Melee Attacks.",
+							"type": "text"
+						},
+						{
+							"key": "isWeaponAttack",
+							"value": "true",
+							"type": "text",
+							"disabled": true
+						}
+					]
+				},
+				"url": {
+					"raw": "{{hostname}}/actions",
+					"host": [
+						"{{hostname}}"
+					],
+					"path": [
+						"actions"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Insert GreatSwordAttack",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "name",
+							"value": "Greatsword",
+							"type": "default"
+						},
+						{
+							"key": "actionType",
+							"value": "1",
+							"type": "default"
+						},
+						{
+							"key": "reach",
+							"value": "5ft",
+							"type": "default"
+						},
+						{
+							"key": "target",
+							"value": "one",
+							"type": "default"
+						},
+						{
+							"key": "hitDice",
+							"value": "2d6",
+							"type": "default"
+						},
+						{
+							"key": "modifierType",
+							"value": "1",
+							"type": "default"
+						},
+						{
+							"key": "damageType",
+							"value": "12",
+							"type": "default"
+						},
+						{
+							"key": "note",
+							"value": "2-Handed",
+							"type": "default",
+							"disabled": true
+						},
+						{
+							"key": "specialInformation",
+							"value": "The {0} makes two Melee Attacks.",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "isWeaponAttack",
+							"value": "true",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{hostname}}/actions",
+					"host": [
+						"{{hostname}}"
+					],
+					"path": [
+						"actions"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Insert Heavy Crossbow",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "name",
+							"value": "Heavy Crossbow",
+							"type": "default"
+						},
+						{
+							"key": "actionType",
+							"value": "2",
+							"type": "default"
+						},
+						{
+							"key": "reach",
+							"value": "100 ft./400ft",
+							"type": "default"
+						},
+						{
+							"key": "target",
+							"value": "one",
+							"type": "default"
+						},
+						{
+							"key": "hitDice",
+							"value": "1d10",
+							"type": "default"
+						},
+						{
+							"key": "modifierType",
+							"value": "2",
+							"type": "default"
+						},
+						{
+							"key": "damageType",
+							"value": "8",
+							"type": "default"
+						},
+						{
+							"key": "weaponAttack",
+							"value": "true",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{hostname}}/actions",
+					"host": [
+						"{{hostname}}"
+					],
+					"path": [
+						"actions"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Insert Reaction Parry",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "name",
+							"value": "Parry",
+							"type": "default"
+						},
+						{
+							"key": "actionType",
+							"value": "3",
+							"type": "default"
+						},
+						{
+							"key": "reach",
+							"value": "5ft",
+							"type": "default",
+							"disabled": true
+						},
+						{
+							"key": "target",
+							"value": "one",
+							"type": "default",
+							"disabled": true
+						},
+						{
+							"key": "hitDice",
+							"value": "2d6",
+							"type": "default",
+							"disabled": true
+						},
+						{
+							"key": "modifierType",
+							"value": "1",
+							"type": "default",
+							"disabled": true
+						},
+						{
+							"key": "damageType",
+							"value": "1",
+							"type": "default",
+							"disabled": true
+						},
+						{
+							"key": "note",
+							"value": "2-Handed",
+							"type": "default",
+							"disabled": true
+						},
+						{
+							"key": "specialInformation",
+							"value": "The {0} adds 2 to its AC against one melee attack that would hit it. To do so, the {0} must see the attacker and be wielding a melee weapon.",
+							"type": "text"
+						},
+						{
+							"key": "isWeaponAttack",
+							"value": "true",
+							"type": "text",
+							"disabled": true
+						}
+					]
+				},
+				"url": {
+					"raw": "{{hostname}}/actions",
+					"host": [
+						"{{hostname}}"
+					],
+					"path": [
+						"actions"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Insert Language enemy default",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "name",
+							"value": "Any One Language (Usually Common)",
+							"type": "default"
+						},
+						{
+							"key": "raceType",
+							"value": "1",
+							"type": "default",
+							"disabled": true
+						},
+						{
+							"key": "stat",
+							"value": "4",
+							"type": "default",
+							"disabled": true
+						}
+					]
+				},
+				"url": {
+					"raw": "{{hostname}}/languages",
+					"host": [
+						"{{hostname}}"
+					],
+					"path": [
+						"languages"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Insert Language Goblin",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "name",
+							"value": "Goblin",
+							"type": "default"
+						},
+						{
+							"key": "raceType",
+							"value": "1",
+							"type": "default",
+							"disabled": true
+						},
+						{
+							"key": "stat",
+							"value": "4",
+							"type": "default",
+							"disabled": true
+						}
+					]
+				},
+				"url": {
+					"raw": "{{hostname}}/languages",
+					"host": [
+						"{{hostname}}"
+					],
+					"path": [
+						"languages"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Insert Human (1)",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "name",
+							"value": "Human",
+							"type": "default"
+						},
+						{
+							"key": "raceType",
+							"value": "1",
+							"type": "default",
+							"disabled": true
+						},
+						{
+							"key": "stat",
+							"value": "2",
+							"type": "default"
+						},
+						{
+							"key": "languages",
+							"value": "2",
+							"type": "text"
+						},
+						{
+							"key": "size",
+							"value": "3",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{hostname}}/races",
+					"host": [
+						"{{hostname}}"
+					],
+					"path": [
+						"races"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Insert Elf (2)",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "name",
+							"value": "Elf",
+							"type": "default"
+						},
+						{
+							"key": "raceType",
+							"value": "1",
+							"type": "default",
+							"disabled": true
+						},
+						{
+							"key": "stat",
+							"value": "3",
+							"type": "default"
+						},
+						{
+							"key": "languages",
+							"value": "2,3",
+							"type": "text"
+						},
+						{
+							"key": "size",
+							"value": "3",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{hostname}}/races",
+					"host": [
+						"{{hostname}}"
+					],
+					"path": [
+						"races"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Insert Goblin (3)",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "name",
+							"value": "Goblin",
+							"type": "default"
+						},
+						{
+							"key": "raceType",
+							"value": "1",
+							"type": "default",
+							"disabled": true
+						},
+						{
+							"key": "stat",
+							"value": "4",
+							"type": "default"
+						},
+						{
+							"key": "languages",
+							"value": "4",
+							"type": "text"
+						},
+						{
+							"key": "size",
+							"value": "2",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{hostname}}/races",
+					"host": [
+						"{{hostname}}"
+					],
+					"path": [
+						"races"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Insert Trait Aberrant Ground",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "name",
+							"value": "Aberrant Ground",
+							"type": "default"
+						},
+						{
+							"key": "description",
+							"value": "The ground in a 10-foot radius around the {0} is doughlike difficult terrain. Each creature that starts its turn in that area must succeed on a [STR] saving throw or have its speed reduced to 0 until the start of its next turn.",
+							"type": "default"
+						},
+						{
+							"key": "stat",
+							"value": "4",
+							"type": "default",
+							"disabled": true
+						},
+						{
+							"key": "languages",
+							"value": "4",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "size",
+							"value": "2",
+							"type": "text",
+							"disabled": true
+						}
+					]
+				},
+				"url": {
+					"raw": "{{hostname}}/traits",
+					"host": [
+						"{{hostname}}"
+					],
+					"path": [
+						"traits"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Insert Trait Brave",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "name",
+							"value": "Brave",
+							"type": "default"
+						},
+						{
+							"key": "description",
+							"value": "The {0} has advantage on saving throws against being frightened.",
+							"type": "default"
+						},
+						{
+							"key": "stat",
+							"value": "4",
+							"type": "default",
+							"disabled": true
+						},
+						{
+							"key": "languages",
+							"value": "4",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "size",
+							"value": "2",
+							"type": "text",
+							"disabled": true
+						}
+					]
+				},
+				"url": {
+					"raw": "{{hostname}}/traits",
+					"host": [
+						"{{hostname}}"
+					],
+					"path": [
+						"traits"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Insert Bandit(1)",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "name",
+							"value": "Bandit",
+							"type": "default"
+						},
+						{
+							"key": "raceType",
+							"value": "1",
+							"type": "default"
+						},
+						{
+							"key": "stat",
+							"value": "1",
+							"type": "default"
+						},
+						{
+							"key": "ac",
+							"value": "12 (Leather Armor)",
+							"type": "default"
+						},
+						{
+							"key": "hitDice",
+							"value": "2d8+2",
+							"type": "default"
+						},
+						{
+							"key": "proficiencyBonus",
+							"value": "2",
+							"type": "default"
+						},
+						{
+							"key": "defaultHitPoints",
+							"value": "11",
+							"type": "default"
+						},
+						{
+							"key": "speed",
+							"value": "1",
+							"type": "default"
+						},
+						{
+							"key": "challengeRating",
+							"value": "1",
+							"type": "default"
+						},
+						{
+							"key": "actions",
+							"value": "1,2",
+							"type": "default"
+						},
+						{
+							"key": "languages",
+							"value": "1",
+							"type": "text"
+						},
+						{
+							"key": "size",
+							"value": "3",
+							"type": "text"
+						},
+						{
+							"key": "alignment",
+							"value": "any non lawfull-alignment",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{hostname}}/enemies",
+					"host": [
+						"{{hostname}}"
+					],
+					"path": [
+						"enemies"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Insert Guard(2)",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "name",
+							"value": "Guard",
+							"type": "default"
+						},
+						{
+							"key": "raceType",
+							"value": "1",
+							"type": "default"
+						},
+						{
+							"key": "stat",
+							"value": "5",
+							"type": "default"
+						},
+						{
+							"key": "ac",
+							"value": "16 (Chain Shirt, Shield)",
+							"type": "default"
+						},
+						{
+							"key": "hitDice",
+							"value": "2d8+2",
+							"type": "default"
+						},
+						{
+							"key": "proficiencyBonus",
+							"value": "2",
+							"type": "default"
+						},
+						{
+							"key": "defaultHitPoints",
+							"value": "11",
+							"type": "default"
+						},
+						{
+							"key": "speed",
+							"value": "1",
+							"type": "default"
+						},
+						{
+							"key": "challengeRating",
+							"value": "1",
+							"type": "default"
+						},
+						{
+							"key": "actions",
+							"value": "3,4,5",
+							"type": "default"
+						},
+						{
+							"key": "languages",
+							"value": "1",
+							"type": "text"
+						},
+						{
+							"key": "size",
+							"value": "3",
+							"type": "text"
+						},
+						{
+							"key": "alignment",
+							"value": "any alignment",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{hostname}}/enemies",
+					"host": [
+						"{{hostname}}"
+					],
+					"path": [
+						"enemies"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Insert Knight (3)",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "name",
+							"value": "Knight",
+							"type": "default"
+						},
+						{
+							"key": "raceType",
+							"value": "1",
+							"type": "default"
+						},
+						{
+							"key": "stat",
+							"value": "6",
+							"type": "default"
+						},
+						{
+							"key": "ac",
+							"value": "18 (Plate)",
+							"type": "default"
+						},
+						{
+							"key": "hitDice",
+							"value": "8d8+16",
+							"type": "default"
+						},
+						{
+							"key": "proficiencyBonus",
+							"value": "2",
+							"type": "default"
+						},
+						{
+							"key": "defaultHitPoints",
+							"value": "52",
+							"type": "default"
+						},
+						{
+							"key": "speed",
+							"value": "1",
+							"type": "default"
+						},
+						{
+							"key": "challengeRating",
+							"value": "1",
+							"type": "default"
+						},
+						{
+							"key": "actions",
+							"value": "6,7,8,9",
+							"type": "default"
+						},
+						{
+							"key": "reactions",
+							"value": "9",
+							"type": "text"
+						},
+						{
+							"key": "savingThrows",
+							"value": "3,5",
+							"type": "text"
+						},
+						{
+							"key": "size",
+							"value": "3",
+							"type": "text"
+						},
+						{
+							"key": "alignment",
+							"value": "any alignment",
+							"type": "text"
+						},
+						{
+							"key": "languages",
+							"value": "1",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{hostname}}/enemies",
+					"host": [
+						"{{hostname}}"
+					],
+					"path": [
+						"enemies"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

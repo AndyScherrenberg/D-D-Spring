@@ -22,7 +22,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "races")
+@Table(name = "race")
 public class Race {
 
     private @Id

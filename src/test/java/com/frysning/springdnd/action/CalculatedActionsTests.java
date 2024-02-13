@@ -1,1 +1,1 @@
-package com.frysning.springdnd.actions;import com.frysning.springdnd.stats.ReadableStats;import com.frysning.springdnd.stats.Stat;import com.frysning.springdnd.traits.ReadableTrait;import com.frysning.springdnd.traits.Trait;import org.junit.jupiter.api.Assertions;import org.junit.jupiter.api.Test;public class CalculatedActionsTests {}
+package com.frysning.springdnd.action;public class CalculatedActionsTests {}

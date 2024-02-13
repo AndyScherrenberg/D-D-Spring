@@ -3,7 +3,7 @@ package com.frysning.springdnd.subrace;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "sub_races")
+@Table(name = "sub_race")
 public class Subrace {
 
     private @Id

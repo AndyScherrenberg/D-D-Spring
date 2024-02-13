@@ -34,4 +34,6 @@ build/
 
 
 ###spring-boot-h2-db.trace.db
-/src/main/resources/application.properties
+/logs/
+/spn.log
+/src/main/java/com/frysning/downloader/
