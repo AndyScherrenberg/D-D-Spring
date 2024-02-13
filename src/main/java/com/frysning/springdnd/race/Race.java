@@ -4,9 +4,9 @@ package com.frysning.springdnd.race;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.frysning.springdnd.language.Language;
 import com.frysning.springdnd.size.Size;
-import com.frysning.springdnd.spells.Spell;
+import com.frysning.springdnd.spell.Spell;
 import com.frysning.springdnd.stats.Stat;
-import com.frysning.springdnd.traits.Trait;
+import com.frysning.springdnd.trait.Trait;
 
 import java.util.ArrayList;
 import java.util.List;
