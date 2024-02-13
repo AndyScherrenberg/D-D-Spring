@@ -4,7 +4,10 @@ package com.frysning.springdnd.race;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.frysning.springdnd.language.Language;
 import com.frysning.springdnd.size.Size;
+import com.frysning.springdnd.spells.Spell;
 import com.frysning.springdnd.stats.Stat;
+import com.frysning.springdnd.traits.Trait;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -35,8 +38,14 @@ public class Race {
     @ManyToMany
     private List<Language> languages = new ArrayList<>();
 
+    @ManyToMany
+    private List<Trait> traits = new ArrayList<>();
     public Race() {
     }
+
+
+    @ManyToMany
+    private List<Spell> spells = new ArrayList<>();
 
     public Race(String name, Stat stat) {
         this.name = name;
@@ -88,4 +97,12 @@ public class Race {
     public void setLanguages(List<Language> languages) {
         this.languages = languages;
     }
+
+    public List<Trait> getTraits() { return traits;}
+
+    public void setTraits(List<Trait> traits) { this.traits = traits;}
+
+    public List<Spell> getSpells() { return spells;}
+
+    public void setSpells(List<Spell> spells) { this.spells = spells;}
 }

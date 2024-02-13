@@ -10,6 +10,7 @@ import com.frysning.springdnd.modifiertype.ModifierType;
 import com.frysning.springdnd.racetype.RaceType;
 import com.frysning.springdnd.size.Size;
 import com.frysning.springdnd.speed.Speed;
+import com.frysning.springdnd.spells.Spell;
 import com.frysning.springdnd.stats.ReadableStats;
 import com.frysning.springdnd.stats.Stat;
 import com.frysning.springdnd.traits.ReadableTrait;
@@ -72,6 +73,9 @@ public class Enemy {
     private List<Language> languages = new ArrayList<>();
     @ElementCollection
     private List<Integer> savingThrows = new ArrayList<>();
+
+    @ManyToMany
+    private List<Spell> spells = new ArrayList<>();
 
     public Enemy(String name, Stat stat, RaceType raceType) {
         this.name = name;
@@ -287,6 +291,10 @@ public class Enemy {
         this.traits = traits;
     }
 
+    public List<Spell> getSpells() { return spells;}
+
+    public void setSpells(List<Spell> spells) { this.spells = spells;}
+
     public List<ReadableTrait> getReadableTraits() {
         return traits.stream()
             .map(trait -> new ReadableTrait(trait, getBaseStats(), getProficiencyBonus(),
@@ -294,4 +302,6 @@ public class Enemy {
             .collect(
                 Collectors.toList());
     }
+
+
 }

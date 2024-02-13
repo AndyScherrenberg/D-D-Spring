@@ -42,7 +42,7 @@ public class RaceTypeController {
         LOGGER.info("POST new RaceType with value: {}", newRaceType.toString());
         EntityModel<RaceType> entityModel = assembler.toModel(repository.save(newRaceType));
 
-        return ResponseEntity //
+        return ResponseEntity
             .created(entityModel.getRequiredLink(IanaLinkRelations.SELF).toUri())
             .body(entityModel);
     }

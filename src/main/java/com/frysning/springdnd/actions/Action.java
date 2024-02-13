@@ -41,7 +41,6 @@ public class Action {
     @ElementCollection
     private List<Integer> modifierType = new ArrayList<>();
 
-
     private boolean isWeaponAttack;
     @Column(columnDefinition = "boolean default false")
     private boolean isReaction;
