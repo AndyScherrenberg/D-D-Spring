@@ -4,25 +4,22 @@ package com.frysning.springdnd.race;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.frysning.springdnd.language.Language;
 import com.frysning.springdnd.size.Size;
+import com.frysning.springdnd.speed.Speed;
+import com.frysning.springdnd.speed_type.SpeedType;
 import com.frysning.springdnd.spell.Spell;
 import com.frysning.springdnd.stats.Stat;
 import com.frysning.springdnd.trait.Trait;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToMany;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table(name = "race")
+@Inheritance(strategy= InheritanceType.SINGLE_TABLE)
 public class Race {
 
     private @Id

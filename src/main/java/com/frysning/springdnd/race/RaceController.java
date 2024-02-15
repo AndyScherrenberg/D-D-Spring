@@ -2,18 +2,17 @@ package com.frysning.springdnd.race;
 
 import java.util.List;
 import java.util.stream.Collectors;
+
+import com.frysning.springdnd.speed.SpeedRepository;
+import com.frysning.springdnd.stats.Stat;
+import com.frysning.springdnd.stats.StatRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.hateoas.EntityModel;
 import org.springframework.hateoas.IanaLinkRelations;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("races")
@@ -23,10 +22,13 @@ public class RaceController {
     private final RaceRepository repository;
     private final RaceModelAssembler assembler;
 
+    private final StatRepository statRepository;
+
     RaceController(
-        RaceRepository repository, RaceModelAssembler assembler) {
+            RaceRepository repository, RaceModelAssembler assembler, StatRepository statRepository) {
         this.repository = repository;
         this.assembler = assembler;
+        this.statRepository = statRepository;
     }
 
     @GetMapping()
@@ -37,16 +39,39 @@ public class RaceController {
             .collect(Collectors.toList());
     }
 
+//    @PostMapping(consumes = {MediaType.APPLICATION_JSON_VALUE})
+//        ResponseEntity<?> newRacez(@RequestBody ExtendedRace newRace) {
+//        System.out.println(newRace);
+//        LOGGER.info("Post json race: {}", newRace.getName());
+//        LOGGER.info("Stats: {}", newRace.getUseStat().toString());
+//        LOGGER.info("size: {}", newRace.getSize());
+//            return null;
+//        }
+
     @PostMapping(consumes = {MediaType.APPLICATION_FORM_URLENCODED_VALUE})
     ResponseEntity<?> newRace(Race newRace) {
-        LOGGER.info("Post new race: {}", newRace.toString());
+        LOGGER.info("Post new race: {}", newRace.getName());
+        /**
+         * We got issues with saving certain values
+         * Speed there needs to be a way that can post the value of what speed we want with the range included
+         * We don't do this at the moment and when we want to make a frontend exp it will be a hashle to do.
+         * We don't want to select a speed from a list and post it.
+         * We want to post a speedType with a Range and if this combi is already existing then we use that value otherwise
+         * we make it.
+         * For Speeds we also need to sanitize it so that when 2 of the same types get posted we only use the first oen
+         * This function also needs to work for the Enemy controller.
+         *
+         * The same logic should be for stats...
+         */
+
+       newRace.setStat(getStat(newRace.getStat()));
+
         EntityModel<Race> entityModel = assembler.toModel(repository.save(newRace));
 
         return ResponseEntity //
             .created(entityModel.getRequiredLink(IanaLinkRelations.SELF).toUri())
             .body(entityModel);
     }
-
     @PutMapping(path = "/{id}", consumes = {MediaType.APPLICATION_FORM_URLENCODED_VALUE})
     ResponseEntity<?> updateRace(@PathVariable Long id, Race newRace) {
         LOGGER.info("Update race by id {} and value: {}", id, newRace.toString());
@@ -89,4 +114,24 @@ public class RaceController {
         return assembler.toModel(race);
     }
 
+    /**
+     * This function is working, but will need a refactoring.
+     */
+    private Stat getStat(Stat stat){
+        Stat newStat = null;
+        if (stat.getId() != null && stat.getId() != 0){
+            newStat = statRepository.getReferenceById(stat.getId());
+        }
+
+        if (newStat == null){
+            newStat = statRepository.findEntity(stat);
+        }
+
+        if (newStat == null){
+            newStat = statRepository.save(stat);
+        }
+
+        LOGGER.info("NewStat: {}", newStat );
+        return newStat;
+    }
 }

@@ -103,4 +103,10 @@ public class Stat {
     }
 
 
+    @Override
+    public String toString() {
+        return String.format("Str: %d, Dex: %d, Con: %d, Int: %d, Wis: %d, Char: %d| ID: %d "
+                , strength, dexterity,constitution,
+                intelligence, wisdom, charisma,id);
+    }
 }
