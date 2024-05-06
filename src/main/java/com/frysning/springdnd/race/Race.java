@@ -40,6 +40,8 @@ public class Race {
     public Race() {
     }
 
+    @ManyToMany
+    private List<Speed> speed = new ArrayList<>();
 
     @ManyToMany
     private List<Spell> spells = new ArrayList<>();
@@ -63,6 +65,14 @@ public class Race {
 
     public void setStat(Stat baseStat) {
         this.stat = baseStat;
+    }
+
+    public List<Speed> getSpeed() {
+        return speed;
+    }
+
+    public void setSpeed(List<Speed> baseSpeed) {
+        this.speed = baseSpeed;
     }
 
     public Long getId() {

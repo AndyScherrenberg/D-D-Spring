@@ -1,9 +1,12 @@
 package com.frysning.springdnd.race;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import com.frysning.springdnd.speed.Speed;
 import com.frysning.springdnd.speed.SpeedRepository;
+import com.frysning.springdnd.speed.SpeedRepositoryImpl;
 import com.frysning.springdnd.stats.Stat;
 import com.frysning.springdnd.stats.StatRepository;
 import com.frysning.springdnd.stats.StatRepositoryImpl;
@@ -24,12 +27,15 @@ public class RaceController {
     private final RaceModelAssembler assembler;
 
     private final StatRepositoryImpl statRepository;
+    private final SpeedRepositoryImpl speedRepository;
 
     RaceController(
-            RaceRepository repository, RaceModelAssembler assembler, StatRepositoryImpl statRepository) {
+            RaceRepository repository, RaceModelAssembler assembler, StatRepositoryImpl statRepository,
+            SpeedRepositoryImpl speedRepository) {
         this.repository = repository;
         this.assembler = assembler;
         this.statRepository = statRepository;
+        this.speedRepository = speedRepository;
     }
 
     @GetMapping()
@@ -39,15 +45,6 @@ public class RaceController {
                 .map(assembler::toModel)
                 .collect(Collectors.toList());
     }
-
-//    @PostMapping(consumes = {MediaType.APPLICATION_JSON_VALUE})
-//        ResponseEntity<?> newRacez(@RequestBody ExtendedRace newRace) {
-//        System.out.println(newRace);
-//        LOGGER.info("Post json race: {}", newRace.getName());
-//        LOGGER.info("Stats: {}", newRace.getUseStat().toString());
-//        LOGGER.info("size: {}", newRace.getSize());
-//            return null;
-//        }
 
     @PostMapping(consumes = {MediaType.APPLICATION_FORM_URLENCODED_VALUE})
     ResponseEntity<?> postRace(Race newRace) {
@@ -64,6 +61,16 @@ public class RaceController {
          */
 
         newRace.setStat(statRepository.getStat(newRace.getStat()));
+        if (newRace.getSpeed() != null) {
+            var sanitizeSpeedList = new ArrayList<Speed>();
+            for (Speed speed : newRace.getSpeed()) {
+                var existingSpeed = speedRepository.getSpeed(speed);
+                if (existingSpeed != null) {
+                    sanitizeSpeedList.add(existingSpeed);
+                }
+            }
+            newRace.setSpeed(sanitizeSpeedList);
+        }
 
         EntityModel<Race> entityModel = assembler.toModel(repository.save(newRace));
 
@@ -82,6 +89,17 @@ public class RaceController {
                     }
                     if (newRace.getStat() != null) {
                         race.setStat(statRepository.getStat(newRace.getStat()));
+                    }
+
+                    if (newRace.getSpeed() != null) {
+                        var sanitizeSpeedList = new ArrayList<Speed>();
+                        for (Speed speed : newRace.getSpeed()) {
+                            var existingSpeed = speedRepository.getSpeed(speed);
+                            if (existingSpeed != null) {
+                                sanitizeSpeedList.add(existingSpeed);
+                            }
+                        }
+                        race.setSpeed(sanitizeSpeedList);
                     }
 
                     if (!newRace.getValidLanguages().isEmpty()) {
