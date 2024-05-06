@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @RestController
-@RequestMapping("condition")
+@RequestMapping("conditions")
 public class ConditionController {
 
 	private static final Logger LOGGER = LoggerFactory.getLogger(ConditionController.class);
@@ -26,13 +26,4 @@ public class ConditionController {
 				.map(EntityModel::of)
 				.collect(Collectors.toList());
 	}
-
-//	@GetMapping("/{id}")
-//	public EntityModel<Speed> one(@PathVariable Long id) {
-//		LOGGER.info("Get speed by id {}", id);
-//		Speed speed = repository.findById(id) //
-//				.orElseThrow(() -> new SpeedNotFoundException(id));
-//
-//		return assembler.toModel(speed);
-//	}
 }
