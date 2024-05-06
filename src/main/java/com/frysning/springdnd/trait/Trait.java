@@ -13,7 +13,7 @@ public class Trait {
     @GeneratedValue(strategy = GenerationType.IDENTITY) Long id;
 
     private String name;
-    @Column(length = 2000)
+    @Column(length = 4000)
     private String description;
 
     public Trait(Long id, String name, String description) {

@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.frysning.springdnd.action.Action;
 import com.frysning.springdnd.action.CalculatedAction;
 import com.frysning.springdnd.challenge_rating.ChallengeRating;
+import com.frysning.springdnd.conditions.Condition;
 import com.frysning.springdnd.damage_type.DamageType;
 import com.frysning.springdnd.language.Language;
 import com.frysning.springdnd.modifier_type.ModifierType;
@@ -54,11 +55,19 @@ public class Enemy {
     private ChallengeRating challengeRating;
 
     @ManyToMany
-    private List<DamageType> weakness;
+    private List<DamageType> damageWeakness;
     @ManyToMany
-    private List<DamageType> immunities;
+    private List<DamageType> damageImmunity;
     @ManyToMany
-    private List<DamageType> resistance;
+    private List<DamageType> damageResistance;
+
+    @ManyToMany
+    private List<Condition> conditionWeakness;
+    @ManyToMany
+    private List<Condition> conditionImmunity;
+    @ManyToMany
+    private List<Condition> conditionResistance;
+
     @ManyToMany
     private List<Action> actions = new ArrayList<>();
     @ManyToMany
@@ -303,5 +312,59 @@ public class Enemy {
                 Collectors.toList());
     }
 
+
+    @JsonIgnore
+    public List<DamageType> getDamageWeakness() {
+        return damageWeakness;
+    }
+
+    public void setDamageWeakness(List<DamageType> damageWeakness) {
+        this.damageWeakness = damageWeakness;
+    }
+
+    @JsonIgnore
+    public List<DamageType> getDamageImmunity() {
+        return damageImmunity;
+    }
+
+    public void setDamageImmunity(List<DamageType> damageImmunity) {
+        this.damageImmunity = damageImmunity;
+    }
+
+    @JsonIgnore
+    public List<DamageType> getDamageResistance() {
+        return damageResistance;
+    }
+
+    public void setDamageResistance(List<DamageType> damageResistance) {
+        this.damageResistance = damageResistance;
+    }
+
+    @JsonIgnore
+    public List<Condition> getConditionWeakness() {
+        return conditionWeakness;
+    }
+
+    public void setConditionWeakness(List<Condition> conditionWeakness) {
+        this.conditionWeakness = conditionWeakness;
+    }
+
+    @JsonIgnore
+    public List<Condition> getConditionImmunity() {
+        return conditionImmunity;
+    }
+
+    public void setConditionImmunity(List<Condition> conditionImmunity) {
+        this.conditionImmunity = conditionImmunity;
+    }
+
+    @JsonIgnore
+    public List<Condition> getConditionResistance() {
+        return conditionResistance;
+    }
+
+    public void setConditionResistance(List<Condition> conditionResistance) {
+        this.conditionResistance = conditionResistance;
+    }
 
 }
