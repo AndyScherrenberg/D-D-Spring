@@ -9,13 +9,13 @@ import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
 
 
 @Component
-class SpellTypeModelAssembler implements RepresentationModelAssembler<SpellLevel, EntityModel<SpellLevel>> {
+class SpellLevelModelAssembler implements RepresentationModelAssembler<SpellLevel, EntityModel<SpellLevel>> {
 
     @Override
     public EntityModel<SpellLevel> toModel(SpellLevel spellLevel) {
         return EntityModel.of(spellLevel,
-            linkTo(methodOn(SpellTypeController.class).one(spellLevel.getId())).withSelfRel(),
-            linkTo(methodOn(SpellTypeController.class).all()).withRel("spelltypes")
+            linkTo(methodOn(SpellLevelController.class).one(spellLevel.getId())).withSelfRel(),
+            linkTo(methodOn(SpellLevelController.class).all()).withRel("spelllevel")
         );
     }
 }
