@@ -21,6 +21,9 @@ import javax.persistence.*;
 @Inheritance(strategy= InheritanceType.SINGLE_TABLE)
 public class Race {
 
+    /**
+     * Data
+     */
     private @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY) Long id;
 
@@ -45,7 +48,6 @@ public class Race {
     @ManyToMany
     private List<Spell> spells = new ArrayList<>();
 
-
     @ManyToMany
     private List<DamageType> damageWeakness;
     @ManyToMany
@@ -64,6 +66,10 @@ public class Race {
         this.name = name;
         this.stat = stat;
     }
+
+    /**
+    GETTER SETTERS
+     **/
 
     public Size getSize() {
         return Size.getById(size);
@@ -105,12 +111,6 @@ public class Race {
         this.name = name;
     }
 
-    @JsonIgnore
-    public List<Language> getValidLanguages() {
-        return languages.stream().filter(language -> language.getId() != null)
-            .collect(Collectors.toList());
-    }
-
     public List<Language> getLanguages() {
         return languages;
     }
@@ -131,7 +131,6 @@ public class Race {
     public List<Speed> getValidSpeed() {
         return speed.stream().filter(spd -> spd.getId() != null).collect(Collectors.toList());
     }
-
 
     @JsonIgnore
     public List<DamageType> getDamageWeakness() {
@@ -186,4 +185,16 @@ public class Race {
     public void setConditionResistance(List<Condition> conditionResistance) {
         this.conditionResistance = conditionResistance;
     }
+
+    /**
+     * Cleaned Data
+     */
+
+
+    @JsonIgnore
+    public List<Language> getValidLanguages() {
+        return languages.stream().filter(language -> language.getId() != null)
+                .collect(Collectors.toList());
+    }
+
 }

@@ -37,3 +37,5 @@ build/
 /logs/
 /spn.log
 /src/main/java/com/frysning/downloader/
+/datasource.mv.db
+/datasource.trace.db
