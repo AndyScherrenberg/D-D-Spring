@@ -43,18 +43,18 @@ public abstract class BaseObject implements Serializable {
 	private List<Spell> spells = new ArrayList<>();
 
 	@ManyToMany
-	private List<DamageType> damageWeakness;
+	private List<DamageType> damageWeakness = new ArrayList<>();
 	@ManyToMany
-	private List<DamageType> damageImmunity;
+	private List<DamageType> damageImmunity = new ArrayList<>();
 	@ManyToMany
-	private List<DamageType> damageResistance;
+	private List<DamageType> damageResistance = new ArrayList<>();
 
 	@ManyToMany
-	private List<Condition> conditionWeakness;
+	private List<Condition> conditionWeakness = new ArrayList<>();
 	@ManyToMany
-	private List<Condition> conditionImmunity;
+	private List<Condition> conditionImmunity = new ArrayList<>();
 	@ManyToMany
-	private List<Condition> conditionResistance;
+	private List<Condition> conditionResistance = new ArrayList<>();
 
 	@ManyToMany
 	protected List<Action> actions = new ArrayList<>();
