@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.frysning.springdnd.action.Action;
 import com.frysning.springdnd.action.CalculatedAction;
 import com.frysning.springdnd.challenge_rating.ChallengeRating;
+import com.frysning.springdnd.combiner.BaseObject;
 import com.frysning.springdnd.conditions.Condition;
 import com.frysning.springdnd.damage_type.DamageType;
 import com.frysning.springdnd.language.Language;
@@ -32,59 +33,23 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "enemy")
-public class Enemy {
+public class Enemy extends BaseObject {
 
-    private @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY) Long id;
-    @Column(nullable = false, unique = true)
-    private String name;
-    @ManyToOne
-    @JoinColumn(name = "stat_id", referencedColumnName = "id", nullable = false)
-    private Stat stat;
     @ManyToOne
     @JoinColumn(name = "race_type_id", referencedColumnName = "id", nullable = false)
     private RaceType raceType;
     private String ac;
     private String hitDice;
     private int defaultHitPoints;
-    @ManyToMany(targetEntity = Speed.class)
-    private List<Speed> speed = new ArrayList<>();
     private int proficiencyBonus;
     @ManyToOne
     @JoinColumn(name = "challenge_rating_id", referencedColumnName = "id")
     private ChallengeRating challengeRating;
 
-    @ManyToMany
-    private List<DamageType> damageWeakness;
-    @ManyToMany
-    private List<DamageType> damageImmunity;
-    @ManyToMany
-    private List<DamageType> damageResistance;
-
-    @ManyToMany
-    private List<Condition> conditionWeakness;
-    @ManyToMany
-    private List<Condition> conditionImmunity;
-    @ManyToMany
-    private List<Condition> conditionResistance;
-
-    @ManyToMany
-    private List<Action> actions = new ArrayList<>();
-    @ManyToMany
-    private List<Action> reactions = new ArrayList<>();
-
-    @ManyToMany
-    private List<Trait> traits = new ArrayList<>();
-    @Column(nullable = true)
-    private int size;
     private String alignment;
-    @ManyToMany
-    private List<Language> languages = new ArrayList<>();
     @ElementCollection
     private List<Integer> savingThrows = new ArrayList<>();
 
-    @ManyToMany
-    private List<Spell> spells = new ArrayList<>();
 
     public Enemy(String name, Stat stat, RaceType raceType) {
         this.name = name;
@@ -96,86 +61,12 @@ public class Enemy {
 
     }
 
-    @JsonIgnore
-    public List<Language> getValidLanguages() {
-        return languages.stream().filter(language -> language.getId() != null)
-            .collect(Collectors.toList());
-    }
-
-    public List<Language> getLanguages() {
-        return languages;
-    }
-
-    public void setLanguages(List<Language> languages) {
-        this.languages = languages;
-    }
-
-    public List<Action> getReactions() {
-        return reactions;
-    }
-
-    @JsonIgnore
-    public void setReactions(List<Action> reactions) {
-        this.reactions = reactions;
-    }
-
-    public List<CalculatedAction> getCalculatedReactions() {
-        return reactions.stream()
-            .map(action -> new CalculatedAction(action, getBaseStats(), getProficiencyBonus(),
-                this.name))
-            .collect(
-                Collectors.toList());
-    }
-
-
-    @JsonIgnore
-    public List<Action> getValidActions() {
-        return actions.stream().filter(action -> action.getId() != null)
-            .collect(Collectors.toList());
-    }
-
-    @JsonIgnore
-    public List<Action> getValidReactions() {
-        return reactions.stream().filter(reaction -> reaction.getId() != null)
-            .collect(Collectors.toList());
-    }
-
-    @JsonIgnore
-    public List<Action> getActions() {
-        return actions;
-    }
-
-    public void setActions(List<Action> actions) {
-        this.actions = actions;
-    }
-
-    public List<CalculatedAction> getCalculatedActions() {
-        return actions.stream()
-            .map(action -> new CalculatedAction(action, getBaseStats(), getProficiencyBonus(),
-                this.name))
-            .collect(
-                Collectors.toList());
-    }
-
     public ChallengeRating getChallengeRating() {
         return challengeRating;
     }
 
     public void setChallengeRating(ChallengeRating challengeRating) {
         this.challengeRating = challengeRating;
-    }
-
-    public List<Speed> getSpeed() {
-        return speed;
-    }
-
-    public void setSpeed(List<Speed> speed) {
-        this.speed = speed;
-    }
-
-    @JsonIgnore
-    public List<Speed> getValidSpeed() {
-        return speed.stream().filter(speed1 -> speed1.getId() != null).collect(Collectors.toList());
     }
 
     public int getDefaultHitPoints() {
@@ -210,31 +101,6 @@ public class Enemy {
         this.proficiencyBonus = proficiencyBonus;
     }
 
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    @JsonIgnore
-    public Stat getStat() {
-        return stat;
-    }
-
-    public void setStat(Stat stat) {
-        this.stat = stat;
-    }
-
     public RaceType getRaceType() {
         return raceType;
     }
@@ -243,19 +109,9 @@ public class Enemy {
         this.raceType = raceType;
     }
 
-
     public ReadableStats getBaseStats() {
         return new ReadableStats(stat);
     }
-
-    public Size getSize() {
-        return Size.getById(size);
-    }
-
-    public void setSize(int size) {
-        this.size = size;
-    }
-
 
     public String getAlignment() {
         return alignment;
@@ -284,26 +140,6 @@ public class Enemy {
         this.savingThrows = modifierType;
     }
 
-
-    @JsonIgnore
-    public List<Trait> getValidTraits() {
-        return traits.stream().filter(trait -> trait.getId() != null)
-            .collect(Collectors.toList());
-    }
-
-    @JsonIgnore
-    public List<Trait> getTraits() {
-        return traits;
-    }
-
-    public void setTraits(List<Trait> traits) {
-        this.traits = traits;
-    }
-
-    public List<Spell> getSpells() { return spells;}
-
-    public void setSpells(List<Spell> spells) { this.spells = spells;}
-
     public List<ReadableTrait> getReadableTraits() {
         return traits.stream()
             .map(trait -> new ReadableTrait(trait, getBaseStats(), getProficiencyBonus(),
@@ -312,59 +148,19 @@ public class Enemy {
                 Collectors.toList());
     }
 
-
-    @JsonIgnore
-    public List<DamageType> getDamageWeakness() {
-        return damageWeakness;
+    public List<CalculatedAction> getCalculatedReactions() {
+        return reactions.stream()
+                .map(action -> new CalculatedAction(action, getBaseStats(), getProficiencyBonus(),
+                        this.name))
+                .collect(
+                        Collectors.toList());
     }
 
-    public void setDamageWeakness(List<DamageType> damageWeakness) {
-        this.damageWeakness = damageWeakness;
+    public List<CalculatedAction> getCalculatedActions() {
+        return actions.stream()
+                .map(action -> new CalculatedAction(action, getBaseStats(), getProficiencyBonus(),
+                        this.name))
+                .collect(
+                        Collectors.toList());
     }
-
-    @JsonIgnore
-    public List<DamageType> getDamageImmunity() {
-        return damageImmunity;
-    }
-
-    public void setDamageImmunity(List<DamageType> damageImmunity) {
-        this.damageImmunity = damageImmunity;
-    }
-
-    @JsonIgnore
-    public List<DamageType> getDamageResistance() {
-        return damageResistance;
-    }
-
-    public void setDamageResistance(List<DamageType> damageResistance) {
-        this.damageResistance = damageResistance;
-    }
-
-    @JsonIgnore
-    public List<Condition> getConditionWeakness() {
-        return conditionWeakness;
-    }
-
-    public void setConditionWeakness(List<Condition> conditionWeakness) {
-        this.conditionWeakness = conditionWeakness;
-    }
-
-    @JsonIgnore
-    public List<Condition> getConditionImmunity() {
-        return conditionImmunity;
-    }
-
-    public void setConditionImmunity(List<Condition> conditionImmunity) {
-        this.conditionImmunity = conditionImmunity;
-    }
-
-    @JsonIgnore
-    public List<Condition> getConditionResistance() {
-        return conditionResistance;
-    }
-
-    public void setConditionResistance(List<Condition> conditionResistance) {
-        this.conditionResistance = conditionResistance;
-    }
-
 }
