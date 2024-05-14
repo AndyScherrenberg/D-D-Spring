@@ -1,6 +1,7 @@
 package com.frysning.springdnd.combiner;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.frysning.springdnd.action.Action;
 import com.frysning.springdnd.conditions.Condition;
 import com.frysning.springdnd.damage_type.DamageType;
@@ -20,11 +21,14 @@ import java.util.stream.Collectors;
 @MappedSuperclass
 public abstract class BaseObject implements Serializable {
 
+	@JsonProperty(index=1)
 	protected @Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY) Long id;
 
 	@Column(nullable = false, unique = true)
+	@JsonProperty(index = 2)
 	protected String name;
+
 	@ManyToOne
 	@JoinColumn(name = "stat_id", referencedColumnName = "id", nullable = false)
 	protected Stat stat;

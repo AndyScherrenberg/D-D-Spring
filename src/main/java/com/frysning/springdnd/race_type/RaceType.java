@@ -1,5 +1,7 @@
 package com.frysning.springdnd.race_type;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -11,33 +13,35 @@ import javax.persistence.Table;
 @Table(name = "race_type")
 public class RaceType {
 
-    private @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY) Long id;
+	@JsonProperty(index = 1)
+	private @Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY) Long id;
 
-    @Column(nullable = false, unique = true)
-    private String name;
+	@Column(nullable = false, unique = true)
+	@JsonProperty(index = 2)
+	private String name;
 
-    public RaceType(String name) {
-        this.name = name;
-    }
+	public RaceType(String name) {
+		this.name = name;
+	}
 
-    public RaceType() {
+	public RaceType() {
 
-    }
+	}
 
-    public Long getId() {
-        return id;
-    }
+	public Long getId() {
+		return id;
+	}
 
-    public void setId(Long id) {
-        this.id = id;
-    }
+	public void setId(Long id) {
+		this.id = id;
+	}
 
-    public String getName() {
-        return name;
-    }
+	public String getName() {
+		return name;
+	}
 
-    public void setName(String name) {
-        this.name = name;
-    }
+	public void setName(String name) {
+		this.name = name;
+	}
 }

@@ -1,7 +1,7 @@
 package com.frysning.springdnd.action;
 
-
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.frysning.springdnd.action_type.ActionType;
 import com.frysning.springdnd.damage_type.DamageType;
 import com.frysning.springdnd.modifier_type.ModifierType;
@@ -20,8 +20,10 @@ import javax.persistence.ManyToOne;
 @Entity
 public class Action {
 
+    @JsonProperty(index=1)
     private @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY) Long id;
+     @JsonProperty(index = 2)
     private String name;
 
     @ManyToOne

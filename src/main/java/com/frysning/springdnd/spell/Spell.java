@@ -1,70 +1,73 @@
 package com.frysning.springdnd.spell;
 
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.frysning.springdnd.spell_type.SpellType;
 
 import javax.persistence.*;
 
 @Entity
-public class Spell  {
+public class Spell {
 
-    private @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY) Long id;
-    private String name;
+	@JsonProperty(index = 1)
+	private @Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY) Long id;
+	@JsonProperty(index = 2)
+	private String name;
 
-    @ManyToOne
-    @JoinColumn(name = "spell_type_id", referencedColumnName = "id", nullable = false)
-    private SpellType spellType;
+	@ManyToOne
+	@JoinColumn(name = "spell_type_id", referencedColumnName = "id", nullable = false)
+	private SpellType spellType;
 
-    public Long getId() {
-        return id;
-    }
+	public Long getId() {
+		return id;
+	}
 
-    public void setId(Long id) {
-        this.id = id;
-    }
+	public void setId(Long id) {
+		this.id = id;
+	}
 
-    public String getName() {
-        return name;
-    }
+	public String getName() {
+		return name;
+	}
 
-    public void setName(String name) {
-        this.name = name;
-    }
+	public void setName(String name) {
+		this.name = name;
+	}
 
-    public SpellType getSpellType() {
-        return spellType;
-    }
+	public SpellType getSpellType() {
+		return spellType;
+	}
 
-    public void setSpellType(SpellType spellType) {
-        this.spellType = spellType;
-    }
+	public void setSpellType(SpellType spellType) {
+		this.spellType = spellType;
+	}
 
-    //MagicSchool
+	//MagicSchool
 
-    //Level
+	//Level
 
-    //Casting Time
+	//Casting Time
 
-    //Range
+	//Range
 
-    //Target
+	//Target
 
-    //Components
+	//Components
 
-    //Duration
+	//Duration
 
-    //Classes
+	//Classes
 
-    //Description
+	//Description
 
-    //HigherLevels
+	//HigherLevels
 
-    //DamageType[]
+	//DamageType[]
 
-    //Damage[]
+	//Damage[]
 
-    //Area?
+	//Area?
 
 
 }
