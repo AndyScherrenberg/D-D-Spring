@@ -19,7 +19,7 @@ public class SpellTests {
 	@Test
 	public void SpellHasCorrectComponentWithNoDuplicates() {
 		Spell spell = new Spell();
-		spell.setComponents(new int[]{1, 2, 3,1});
+		spell.setComponents(new int[]{1, 2, 3, 1});
 		var expected = "V,S,M";
 		var result = spell.getComponents();
 
@@ -30,6 +30,16 @@ public class SpellTests {
 	public void SpellHasComponentsAreVSM() {
 		Spell spell = new Spell();
 		spell.setComponents(new int[]{3, 1, 2});
+		var expected = "V,S,M";
+		var result = spell.getComponents();
+
+		Assertions.assertEquals(expected, result);
+	}
+
+	@Test
+	public void SpellComponentDoesNotContainNotSupported() {
+		Spell spell = new Spell();
+		spell.setComponents(new int[]{3, 1, 2, 0, 5, 6, 4});
 		var expected = "V,S,M";
 		var result = spell.getComponents();
 

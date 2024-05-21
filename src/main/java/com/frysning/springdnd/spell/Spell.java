@@ -241,11 +241,14 @@ public class Spell {
 		var components = Arrays.stream(this.components).distinct().sorted().toArray();
 
 		var componentString = new StringBuilder();
-		for (int comp : components){
-			componentString.append(Component.getById(comp).getDescription()).append(",");
+		for (int comp : components) {
+			var component = Component.getById(comp);
+			if (component != Component.NOT_SUPPORTED) {
+				componentString.append(Component.getById(comp).getDescription()).append(",");
+			}
 		}
-		if (!componentString.isEmpty()){
-			componentString.deleteCharAt(componentString.length()-1);
+		if (!componentString.isEmpty()) {
+			componentString.deleteCharAt(componentString.length() - 1);
 		}
 
 		if (componentDescription != null && !componentDescription.isEmpty()) {
