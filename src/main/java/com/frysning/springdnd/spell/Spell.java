@@ -98,7 +98,6 @@ public class Spell {
 		this.spellType = spellType;
 	}
 
-
 	public String getDescription() {
 		return description;
 	}

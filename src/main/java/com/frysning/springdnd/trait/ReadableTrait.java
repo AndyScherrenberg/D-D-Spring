@@ -30,10 +30,10 @@ public class ReadableTrait extends Trait {
         if (traitsToUpdate != null) {
             List<String> savingThrows = Arrays.stream(traitsToUpdate)
                 .distinct().collect(Collectors.toList());
-            savingThrows.forEach(savingThrow -> {
-                determineWhichModifierIsNeeded(ModifierType.valueOf(savingThrow), stats,
-                    proficiencyBonus);
-            });
+            savingThrows.forEach(savingThrow ->
+                determineWhichModifierIsNeeded(ModifierType.valueOrNotSupported(savingThrow), stats,
+                    proficiencyBonus)
+            );
         }
     }
 

@@ -1,5 +1,9 @@
 package com.frysning.springdnd.spell;
 
+import com.frysning.springdnd.stats.ReadableStats;
+import com.frysning.springdnd.stats.Stat;
+import com.frysning.springdnd.trait.ReadableTrait;
+import com.frysning.springdnd.trait.Trait;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
