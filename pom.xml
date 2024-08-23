@@ -24,7 +24,6 @@
       <artifactId>spring-boot-starter-web</artifactId>
       <groupId>org.springframework.boot</groupId>
     </dependency>
-
     <dependency>
       <artifactId>spring-boot-starter-test</artifactId>
       <groupId>org.springframework.boot</groupId>
@@ -35,8 +34,9 @@
       <groupId>org.springframework.boot</groupId>
     </dependency>
     <dependency>
-      <artifactId>h2</artifactId>
-      <groupId>com.h2database</groupId>
+      <groupId>org.mariadb.jdbc</groupId>
+      <artifactId>mariadb-java-client</artifactId>
+      <version>1.5.7</version>
     </dependency>
     <dependency>
       <artifactId>spring-boot-starter-hateoas</artifactId>
@@ -58,7 +58,7 @@
   <groupId>com.frysning</groupId>
   <modelVersion>4.0.0</modelVersion>
   <name>springdnd</name>
-  <packaging>war</packaging>
+  <packaging>jar</packaging>
   <parent>
     <artifactId>spring-boot-starter-parent</artifactId>
     <groupId>org.springframework.boot</groupId>
@@ -66,10 +66,8 @@
     <version>2.7.3</version> <!-- lookup parent from repository -->
   </parent>
   <properties>
-    <java.version>11</java.version>
+    <java.version>17</java.version>
     <start-class>com.frysning.springdnd.SpringdndApplication</start-class>
   </properties>
-
-  <version>0.0.1-SNAPSHOT</version>
-
+  <version>1.0.0</version>
 </project>

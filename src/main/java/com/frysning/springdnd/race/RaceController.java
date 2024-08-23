@@ -4,11 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import com.frysning.springdnd.speed.Speed;
-import com.frysning.springdnd.speed.SpeedRepository;
-import com.frysning.springdnd.speed.SpeedRepositoryImpl;
-import com.frysning.springdnd.stats.Stat;
-import com.frysning.springdnd.stats.StatRepository;
+import com.frysning.springdnd.speed.SpeedValue;
+import com.frysning.springdnd.speed.SpeedValueRepositoryImpl;
 import com.frysning.springdnd.stats.StatRepositoryImpl;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -27,11 +24,11 @@ public class RaceController {
     private final RaceModelAssembler assembler;
 
     private final StatRepositoryImpl statRepository;
-    private final SpeedRepositoryImpl speedRepository;
+    private final SpeedValueRepositoryImpl speedRepository;
 
     RaceController(
             RaceRepository repository, RaceModelAssembler assembler, StatRepositoryImpl statRepository,
-            SpeedRepositoryImpl speedRepository) {
+            SpeedValueRepositoryImpl speedRepository) {
         this.repository = repository;
         this.assembler = assembler;
         this.statRepository = statRepository;
@@ -62,9 +59,9 @@ public class RaceController {
 
         newRace.setStat(statRepository.getStat(newRace.getStat()));
         if (newRace.getSpeed() != null) {
-            var sanitizeSpeedList = new ArrayList<Speed>();
-            for (Speed speed : newRace.getSpeed()) {
-                var existingSpeed = speedRepository.getSpeed(speed);
+            var sanitizeSpeedList = new ArrayList<SpeedValue>();
+            for (SpeedValue speedValue : newRace.getSpeed()) {
+                var existingSpeed = speedRepository.getSpeed(speedValue);
                 if (existingSpeed != null) {
                     sanitizeSpeedList.add(existingSpeed);
                 }
@@ -92,8 +89,8 @@ public class RaceController {
                     }
 
                     if (newRace.getSpeed() != null) {
-                        var sanitizeSpeedList = new ArrayList<Speed>();
-                        for (Speed speed : newRace.getSpeed()) {
+                        var sanitizeSpeedList = new ArrayList<SpeedValue>();
+                        for (SpeedValue speed : newRace.getSpeed()) {
                             var existingSpeed = speedRepository.getSpeed(speed);
                             if (existingSpeed != null) {
                                 sanitizeSpeedList.add(existingSpeed);

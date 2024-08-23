@@ -2,8 +2,6 @@ package com.frysning.springdnd.spell;
 
 import com.frysning.springdnd.modifier_type.ModifierType;
 import com.frysning.springdnd.stats.ReadableStats;
-import com.frysning.springdnd.stats.Stat;
-import com.frysning.springdnd.trait.ReadableTrait;
 import org.apache.commons.lang3.StringUtils;
 
 import java.text.MessageFormat;
@@ -42,7 +40,7 @@ public class ReadableSpell extends Spell {
 		this.setMagicSchool(spell.getMagicSchool());
 		this.setName(spell.getName());
 		this.setPlayerClasses(spell.getPlayerClasses());
-		this.setRange(spell.getRange());
+		this.setSpellRange(spell.getSpellRange());
 		this.setSave(spell.getSave());
 		this.setSpellLevel(spell.getSpellLevel());
 		this.setSpellType(spell.getSpellType());

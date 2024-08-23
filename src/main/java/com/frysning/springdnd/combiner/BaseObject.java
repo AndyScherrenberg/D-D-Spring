@@ -3,11 +3,11 @@ package com.frysning.springdnd.combiner;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.frysning.springdnd.action.Action;
-import com.frysning.springdnd.conditions.Condition;
+import com.frysning.springdnd.conditions.ConditionType;
 import com.frysning.springdnd.damage_type.DamageType;
 import com.frysning.springdnd.language.Language;
 import com.frysning.springdnd.size.Size;
-import com.frysning.springdnd.speed.Speed;
+import com.frysning.springdnd.speed.SpeedValue;
 import com.frysning.springdnd.spell.Spell;
 import com.frysning.springdnd.stats.Stat;
 import com.frysning.springdnd.trait.Trait;
@@ -41,7 +41,7 @@ public abstract class BaseObject implements Serializable {
 	protected List<Trait> traits = new ArrayList<>();
 
 	@ManyToMany
-	private List<Speed> speed = new ArrayList<>();
+	private List<SpeedValue> speedValue = new ArrayList<>();
 
 	@ManyToMany
 	private List<Spell> spells = new ArrayList<>();
@@ -54,11 +54,11 @@ public abstract class BaseObject implements Serializable {
 	private List<DamageType> damageResistance = new ArrayList<>();
 
 	@ManyToMany
-	private List<Condition> conditionWeakness = new ArrayList<>();
+	private List<ConditionType> conditionTypeWeaknesses = new ArrayList<>();
 	@ManyToMany
-	private List<Condition> conditionImmunity = new ArrayList<>();
+	private List<ConditionType> conditionTypeImmunity = new ArrayList<>();
 	@ManyToMany
-	private List<Condition> conditionResistance = new ArrayList<>();
+	private List<ConditionType> conditionTypeResistance = new ArrayList<>();
 
 	@ManyToMany
 	protected List<Action> actions = new ArrayList<>();
@@ -85,12 +85,12 @@ public abstract class BaseObject implements Serializable {
 		this.stat = baseStat;
 	}
 
-	public List<Speed> getSpeed() {
-		return speed;
+	public List<SpeedValue> getSpeed() {
+		return speedValue;
 	}
 
-	public void setSpeed(List<Speed> baseSpeed) {
-		this.speed = baseSpeed;
+	public void setSpeed(List<SpeedValue> baseSpeedValue) {
+		this.speedValue = baseSpeedValue;
 	}
 
 	public Long getId() {
@@ -153,30 +153,30 @@ public abstract class BaseObject implements Serializable {
 	}
 
 	@JsonIgnore
-	public List<Condition> getConditionWeakness() {
-		return conditionWeakness;
+	public List<ConditionType> getConditionWeakness() {
+		return conditionTypeWeaknesses;
 	}
 
-	public void setConditionWeakness(List<Condition> conditionWeakness) {
-		this.conditionWeakness = conditionWeakness;
-	}
-
-	@JsonIgnore
-	public List<Condition> getConditionImmunity() {
-		return conditionImmunity;
-	}
-
-	public void setConditionImmunity(List<Condition> conditionImmunity) {
-		this.conditionImmunity = conditionImmunity;
+	public void setConditionWeakness(List<ConditionType> conditionTypeWeaknesses) {
+		this.conditionTypeWeaknesses = conditionTypeWeaknesses;
 	}
 
 	@JsonIgnore
-	public List<Condition> getConditionResistance() {
-		return conditionResistance;
+	public List<ConditionType> getConditionImmunity() {
+		return conditionTypeImmunity;
 	}
 
-	public void setConditionResistance(List<Condition> conditionResistance) {
-		this.conditionResistance = conditionResistance;
+	public void setConditionImmunity(List<ConditionType> conditionTypeImmunity) {
+		this.conditionTypeImmunity = conditionTypeImmunity;
+	}
+
+	@JsonIgnore
+	public List<ConditionType> getConditionResistance() {
+		return conditionTypeResistance;
+	}
+
+	public void setConditionResistance(List<ConditionType> conditionTypeResistance) {
+		this.conditionTypeResistance = conditionTypeResistance;
 	}
 
 	public List<Action> getReactions() {
@@ -214,8 +214,8 @@ public abstract class BaseObject implements Serializable {
 	}
 
 	@JsonIgnore
-	public List<Speed> getValidSpeed() {
-		return speed.stream().filter(speed1 -> speed1.getId() != null).collect(Collectors.toList());
+	public List<SpeedValue> getValidSpeed() {
+		return speedValue.stream().filter(speed1 -> speed1.getId() != null).collect(Collectors.toList());
 	}
 
 	@JsonIgnore

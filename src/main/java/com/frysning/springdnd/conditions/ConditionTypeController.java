@@ -10,17 +10,17 @@ import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("conditions")
-public class ConditionController {
+public class ConditionTypeController {
 
-	private static final Logger LOGGER = LoggerFactory.getLogger(ConditionController.class);
-	private final ConditionRepository repository;
+	private static final Logger LOGGER = LoggerFactory.getLogger(ConditionTypeController.class);
+	private final ConditionTypeRepository repository;
 
-	ConditionController(ConditionRepository repository) {
+	ConditionTypeController(ConditionTypeRepository repository) {
 		this.repository = repository;
 	}
 
 	@GetMapping()
-	List<EntityModel<Condition>> all(@RequestParam(required = false, defaultValue = "false") Boolean showLinks) {
+	List<EntityModel<ConditionType>> all(@RequestParam(required = false, defaultValue = "false") Boolean showLinks) {
 		LOGGER.info("Get al conditions");
 		return repository.findAll().stream()
 				.map(EntityModel::of)

@@ -3,7 +3,7 @@ package com.frysning.springdnd.spell;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.frysning.springdnd.components.Component;
-import com.frysning.springdnd.conditions.Condition;
+import com.frysning.springdnd.conditions.ConditionType;
 import com.frysning.springdnd.damage_type.DamageType;
 import com.frysning.springdnd.effects.Effect;
 import com.frysning.springdnd.magic_school.MagicSchool;
@@ -34,7 +34,7 @@ public class Spell {
 
 	private String duration;
 
-	private String range;
+	private String spellRange;
 
 	private int[] components;
 
@@ -62,7 +62,7 @@ public class Spell {
 	private List<DamageType> damageTypes;
 
 	@ManyToMany
-	private List<Condition> conditions;
+	private List<ConditionType> conditionTypes;
 
 	@ManyToMany
 	private List<Effect> effects;
@@ -130,12 +130,12 @@ public class Spell {
 		this.duration = duration;
 	}
 
-	public String getRange() {
-		return range;
+	public String getSpellRange() {
+		return spellRange;
 	}
 
-	public void setRange(String range) {
-		this.range = range;
+	public void setSpellRange(String spellRange) {
+		this.spellRange = spellRange;
 	}
 
 	@JsonIgnore
@@ -196,12 +196,12 @@ public class Spell {
 		this.damageTypes = damageTypes;
 	}
 
-	public List<Condition> getConditions() {
-		return conditions;
+	public List<ConditionType> getConditions() {
+		return conditionTypes;
 	}
 
-	public void setConditions(List<Condition> conditions) {
-		this.conditions = conditions;
+	public void setConditions(List<ConditionType> conditionTypes) {
+		this.conditionTypes = conditionTypes;
 	}
 
 	public List<Effect> getEffects() {

@@ -35,7 +35,6 @@ public class ActionController extends BaseActionController {
         return super.createAction(newAction);
     }
 
-
     @PutMapping(path = "/{id}", consumes = {MediaType.APPLICATION_FORM_URLENCODED_VALUE})
     ResponseEntity<?> updateAction(@PathVariable Long id, Action newAction) {
         return super.updateAction(id, newAction);
